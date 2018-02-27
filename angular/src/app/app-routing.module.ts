@@ -1,0 +1,32 @@
+// Modules
+import { NgModule }             from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { SearchComponent } from './search/search.component';
+
+// Components
+const appRoutes: Routes = [
+  //Login page?
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'home', redirectTo: '/login' },
+  { path: 'login', component: LoginComponent},
+  
+  { path: 'search', component: SearchComponent },
+
+  //Might want to change this to an error/404 page?
+  { path: '**', redirectTo: '/login' },
+  
+];
+
+ 
+@NgModule({
+  imports: [
+
+    RouterModule.forRoot( appRoutes, { enableTracing: true } /* <-- debugging purposes only */)
+
+],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}  
