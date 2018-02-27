@@ -15,10 +15,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
 
   //Home routes
+  { path: 'search', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
-
-  //Search component (Make a seperate page?)
-  { path: 'search', component: SearchComponent },
 
   //Might want to change this to an error/404 page?
   { path: '**', redirectTo: '/login' },
