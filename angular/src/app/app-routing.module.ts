@@ -5,14 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
+import { HomeComponent } from './home/home.component';
 
 // Components
 const appRoutes: Routes = [
-  //Login page?
+
+  //Routes for the login page
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'home', redirectTo: '/login' },
   { path: 'login', component: LoginComponent},
-  
+
+  //Home routes
+  { path: 'home', component: HomeComponent},
+
+  //Search component (Make a seperate page?)
   { path: 'search', component: SearchComponent },
 
   //Might want to change this to an error/404 page?
