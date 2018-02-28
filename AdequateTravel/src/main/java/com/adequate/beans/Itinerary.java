@@ -3,6 +3,9 @@ package com.adequate.beans;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+@Component(value="itinerary")
 public class Itinerary {
 
 	private int itineraryID;

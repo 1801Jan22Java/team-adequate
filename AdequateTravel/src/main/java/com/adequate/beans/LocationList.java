@@ -2,6 +2,9 @@ package com.adequate.beans;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component(value="locationList")
 public class LocationList {
 
 	private int locationID;

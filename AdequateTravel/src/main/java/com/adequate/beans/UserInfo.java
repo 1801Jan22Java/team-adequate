@@ -1,5 +1,8 @@
 package com.adequate.beans;
 
+import org.springframework.stereotype.Component;
+
+@Component(value="userInfo")
 public class UserInfo {
 
 	private int userID;

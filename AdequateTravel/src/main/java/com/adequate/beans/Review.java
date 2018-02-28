@@ -2,6 +2,9 @@ package com.adequate.beans;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
+@Component(value="review")
 public class Review {
 
 	public Review(int locationID, int userID, String reviewBody, LocalDate timeOfReview, int rating) {
