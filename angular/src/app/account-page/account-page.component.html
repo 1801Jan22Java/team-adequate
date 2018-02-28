@@ -1,7 +1,48 @@
 <app-navigation></app-navigation>
 
-<div class="container align-center">
+<div class="form container text-center">
 
-  <h1> WIP for the account page </h1>
   
+
+  <br>
+  <br>
+
+    <div class="col-sm-6">
+        <h1> Account {{ user.id }} </h1><br>
+        <img src="http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg" class="img-rounded .img-responsive" alt="Profile Picture">
+        <br><br><br>
+    </div>
+    <div class="col-sm-6">
+        <div>
+            <br><br><br><br>
+            <label for="username"> Username </label><br>
+            <input type="text" id="username" placeholder="{{user.username}}"/>
+            <br><br>
+        </div>
+        <div>
+            <label for="firstname"> First Name </label><br>
+            <input type="text" id="firstname" placeholder="{{user.firstname}}"/>
+            <br><br>
+        </div>
+
+        <div>
+            <label for="lastname"> Last Name </label><br>
+            <input type="text" id="lastname" placeholder="{{user.lastname}}"/>
+            <br><br>
+        </div>
+  
+        <br><br><br>
+    </div>
+
+  <div>
+        <label for="desc">Bio</label>
+        <textarea class="form-control" rows="5" id="desc" placeholder="{{user.description}}"></textarea>
+  </div>
+
+  <br>
+  <br>
+  <button>Save</button>
+
+  <br><br><br>
+  <p> Saved Trips </p>
 </div>
