@@ -85,6 +85,9 @@ Servers/
 
 # Created by https://www.gitignore.io/api/angular
 
+### Spring Demo ###
+/SpringCoreDemo/
+
 ### Angular ###
 ## Angular ##
 # compiled output
