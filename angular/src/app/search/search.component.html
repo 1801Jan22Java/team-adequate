@@ -6,12 +6,47 @@
 -->
 
 <!-- Search form -->
-<form class="form-inline" action="search">
+<div class="form">
+  <form class="form-inline" action="search">
 
-    <div class="form-group">
-      <input type="text" class="form-control" id="search">
-    </div>
+      <div class="login-form">
+          <input type="text" placeholder="Find an adequate trip!"/>
+          <button type="submit" class="btn btn-default">Search</button>
+      </div>
 
-    <button type="submit" class="btn btn-default">Search</button>
+      <p data-toggle="collapse" class="advancedToggle" data-target="#advanced">Advanced</p>
+
+      <!-- Advanced searc options dropdown -->
+      <div id="advanced" class="collapse">
+          
+        <!--Range slider -->
+        <div class="container text-center">
+
+          <div class="slidecontainer">
+            <label> Distance </label>
+            <input [(ngModel)]="searchDistance"
+            type="range" min="1" max="100" value="10" class="slider" id="myRange" name="searchDistanceSlider">
+            <p>{{ searchDistance }} miles</p>
+          </div>
+
+          <br>
+          <div>
+            <label> Price </label>
+            <input [(ngModel)]="searchPrice"
+            type="range" min="1" max="4" value="1" class="slider" id="myRange" name="searchPriceSlider">
+            <p>{{ searchPrice }} </p>
+          </div>
+          
+          <br>
+          <div>
+            <label> Rating </label>
+            <input [(ngModel)]="searchRating"
+            type="range" min="1" max="5" value="10" class="slider" id="myRange" name="searchRatingSlider">
+            <p>{{ searchRating }} </p>
+          </div>
+        </div>
+      </div>
 
   </form>
+</div>
+

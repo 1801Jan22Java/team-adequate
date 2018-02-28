@@ -12,4 +12,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Search params
+  searchDistance : number = 10;
+  searchPrice : number = 1;
+  searchRating : number = 1;
 }

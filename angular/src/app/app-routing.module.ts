@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { AccountPageComponent } from './account-page/account-page.component';
 
 // Components
 const appRoutes: Routes = [
@@ -16,6 +17,9 @@ const appRoutes: Routes = [
   //Home routes
   { path: 'search', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
+
+  //Account routes
+  { path: 'account', component: AccountPageComponent},
 
   //Might want to change this to an error/404 page?
   { path: '**', redirectTo: '/login' },
