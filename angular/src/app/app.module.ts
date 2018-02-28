@@ -10,6 +10,7 @@ import { SearchComponent } from './search/search.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AccountPageComponent } from './account-page/account-page.component';
+import { PlaceComponent } from './place/place.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AccountPageComponent } from './account-page/account-page.component';
     SearchComponent,
     HomeComponent,
     NavigationComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    PlaceComponent
     
   ],
   imports: [
