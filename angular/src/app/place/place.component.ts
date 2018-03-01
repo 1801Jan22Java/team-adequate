@@ -12,6 +12,8 @@ export class PlaceComponent implements OnInit {
   ngOnInit() {
   }
 
-  
+  placeName : String = 'temp name';
+  placeDesciption : String = 'Lorem ipsum';
+
 
 }

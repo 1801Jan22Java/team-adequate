@@ -22,7 +22,7 @@
   <br *ngIf="!searchPeople" />
   <div>
     <div class="row align-items-center">
-      <input type="checkbox" (click)="togglePeople()" /><span class="title">  Search People</span>
+      <input type="checkbox" (click)="togglePeople()" /><span class="addFont">  Search People</span>
     </div>
   </div>
   <br />
@@ -40,7 +40,7 @@
 
         <div class="row">
           <div >
-            <span class="title"> Distance: {{ searchDistance }} miles </span>
+            <span class="addFont"> Distance: {{ searchDistance }} miles </span>
             <br />
             <br />
             <input [(ngModel)]="searchDistance"
@@ -48,7 +48,7 @@
           </div>
           <br />
           <div>
-            <span class="title"> Price: {{ searchPriceString }} </span>
+            <span class="addFont"> Price: {{ searchPriceString }} </span>
             <br />
             <br />
             <input [(ngModel)]="searchPrice"
@@ -58,7 +58,7 @@
           </div>
           <br />
           <div>
-            <span class="title" [innerHtml]="searchRatingString"></span>
+            <span class="addFont" [innerHtml]="searchRatingString"></span>
             <br />
             <br />
             <input [(ngModel)]="searchRating"
