@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AccountPageComponent } from './account-page/account-page.component';
+import { PlaceComponent } from './place/place.component';
 
 // Components
 const appRoutes: Routes = [
@@ -21,18 +22,21 @@ const appRoutes: Routes = [
   //Account routes
   { path: 'account', component: AccountPageComponent},
 
+  //TODO: Place routes (temp should only be able to navigate from search)
+  { path: 'place', component: PlaceComponent},
+
   //Might want to change this to an error/404 page?
   { path: '**', redirectTo: '/login' },
-  
+
 ];
 
- 
+
 @NgModule({
   imports: [
-
+    // TODO: disable tracing!!!!!!!
     RouterModule.forRoot( appRoutes, { enableTracing: true } /* <-- debugging purposes only */)
 
 ],
   exports: [ RouterModule ]
 })
-export class AppRoutingModule {}  
+export class AppRoutingModule {}
