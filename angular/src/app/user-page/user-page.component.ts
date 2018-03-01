@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user'
 
 @Component({
-  selector: 'app-account-page',
-  templateUrl: './account-page.component.html',
-  styleUrls: ['./account-page.component.css']
+  selector: 'app-user-page',
+  templateUrl: './user-page.component.html',
+  styleUrls: ['./user-page.component.css']
 })
-export class AccountPageComponent implements OnInit {
+export class UserPageComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  //Placeholder, load this from the backend
   user : User = {
     id : 0,
 
@@ -21,7 +20,7 @@ export class AccountPageComponent implements OnInit {
     firstname : "firstname",
     lastname : "lastname",
     description : "This is a test description for the user",
-    profilePic : "img.jpg"
+    profilePic : "https://tse4.mm.bing.net/th?id=OIP.dfuGcOmQ7cyBB2Zeuc8IQQHaHa&pid=Api"
   };
 
 }

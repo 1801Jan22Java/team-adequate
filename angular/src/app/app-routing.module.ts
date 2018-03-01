@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { PlaceComponent } from './place/place.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 // Components
 const appRoutes: Routes = [
@@ -24,6 +25,9 @@ const appRoutes: Routes = [
 
   //TODO: Place routes (temp should only be able to navigate from search)
   { path: 'place', component: PlaceComponent},
+
+  //TODO: Place routes (temp should only be able to navigate from search)
+  { path: 'user', component: UserPageComponent},
 
   //Might want to change this to an error/404 page?
   { path: '**', redirectTo: '/login' },

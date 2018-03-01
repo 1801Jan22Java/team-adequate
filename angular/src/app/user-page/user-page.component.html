@@ -3,27 +3,30 @@
 <div class="form container text-center">
 
     <div class="col-sm-6">
-        <h1> Account </h1><br>
+        <h1> {{user.username}} </h1><br>
         <!-- Should be a fixed size image -->
-        <img src="http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg" class="img-rounded .img-responsive" alt="Profile Picture">
+        <div class= "profilePic">
+          <img src="{{user.profilePic}}" class="img-rounded .img-responsive" alt="Profile Picture">
+        </div>
+
         <br>
     </div>
     <div class="col-sm-6">
         <div>
             <br><br><br><br>
             <label for="username"> Username </label><br>
-            <input type="text" id="username" placeholder="{{user.username}}"/>
+            <p id="username"> {{user.username}} </p>
             <br><br>
         </div>
         <div>
             <label for="firstname"> First Name </label><br>
-            <input type="text" id="firstname" placeholder="{{user.firstname}}"/>
+            <p id="firstname"> {{user.firstname}} </p>
             <br><br>
         </div>
 
         <div>
             <label for="lastname"> Last Name </label><br>
-            <input type="text" id="lastname" placeholder="{{user.lastname}}"/>
+            <p id="lastname"> {{user.lastname}} </p>
         </div>
   
         <br>
@@ -31,7 +34,7 @@
 
   <div>
         <label for="desc">Bio</label>
-        <textarea class="form-control" rows="5" id="desc" placeholder="{{user.description}}"></textarea>
+        <p id="desc"> {{user.description}} </p>
   </div>
 
   <br>

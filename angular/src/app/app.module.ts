@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { PlaceComponent } from './place/place.component';
+import { UserCardComponent } from './user-card/user-card.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { PlaceComponent } from './place/place.component';
     HomeComponent,
     NavigationComponent,
     AccountPageComponent,
-    PlaceComponent
+    PlaceComponent,
+    UserCardComponent,
+    UserPageComponent
     
   ],
   imports: [
