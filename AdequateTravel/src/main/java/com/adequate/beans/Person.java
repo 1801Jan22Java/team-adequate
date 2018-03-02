@@ -1,6 +1,6 @@
 package com.adequate.beans;
 
-public class User {
+public class Person {
 	
 	private int userID;
 	private String email;
