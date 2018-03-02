@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<!-- serach for spring beans -->
-	<context:component-scan base-package="com.revature"></context:component-scan>
+	<context:component-scan base-package="com.adequate"></context:component-scan>
 	
 	<!-- Enable Transaction annotations -->
 	<tx:annotation-driven/>
@@ -22,7 +22,7 @@
 	<!--  Session Factory -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="packagesToScan" value="com.revature.beans"/>
+		<property name="packagesToScan" value="com.adequate.beans"/>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect"></prop>
