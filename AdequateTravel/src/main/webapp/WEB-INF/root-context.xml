@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- serach for spring beans -->
+	<context:component-scan base-package="com.revature"></context:component-scan>
+	
+	<!-- Enable Transaction annotations -->
+	<tx:annotation-driven/>
+	
+	<!-- Data source -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oraclejdbc.driver.OracleDriver"/>
+		<!-- <property name="url" value="" >  for DB url	--> 
+		<!-- username and password properties -->
+	</bean>
+	
+	<!--  Session Factory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan" value="com.revature.beans"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect"></prop>
+				<prop key="hiberante.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Transaction manager -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.hibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+</beans>
