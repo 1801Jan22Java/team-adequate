@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { PlaceComponent } from './place/place.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { RegistrationComponent} from './registration/registration.component';
 
 // Components
 const appRoutes: Routes = [
@@ -22,6 +23,9 @@ const appRoutes: Routes = [
 
   //Account routes
   { path: 'account', component: AccountPageComponent},
+  
+  //Routes for the registration page
+  { path: 'registration', component: RegistrationComponent},
 
   //TODO: Place routes (temp should only be able to navigate from search)
   { path: 'place', component: PlaceComponent},

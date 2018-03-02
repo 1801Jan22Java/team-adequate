@@ -13,7 +13,10 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { PlaceComponent } from './place/place.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { UserPageComponent } from './user-page/user-page.component';
+
 import { HttpClientModule } from '@angular/common/http';
+import { ReviewCardComponent } from './review-card/review-card.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { HttpService } from './Http.service';
 
 @NgModule({
@@ -26,7 +29,9 @@ import { HttpService } from './Http.service';
     AccountPageComponent,
     PlaceComponent,
     UserCardComponent,
-    UserPageComponent
+    UserPageComponent,
+    ReviewCardComponent,
+    RegistrationComponent
     
   ],
   imports: [
