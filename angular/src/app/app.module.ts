@@ -13,6 +13,8 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { PlaceComponent } from './place/place.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { ReviewCardComponent } from './review-card/review-card.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { UserPageComponent } from './user-page/user-page.component';
     AccountPageComponent,
     PlaceComponent,
     UserCardComponent,
-    UserPageComponent
+    UserPageComponent,
+    ReviewCardComponent,
+    RegistrationComponent
     
   ],
   imports: [

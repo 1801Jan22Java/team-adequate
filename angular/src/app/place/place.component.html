@@ -1,11 +1,6 @@
 <app-navigation></app-navigation>
 
-<div class="title" style="text-align:center">
-  <h1> Hello this is a place! </h1>
-</div>
-<br />
-
-<div class="form">
+<div class="form container text-center">
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -47,10 +42,44 @@
     <div class="title">
       <h1>{{placeName}}</h1>
     </div>
-
+    <br />
+    <div class="title">
+      <h4 [innerHTML]="numStars"></h4>
+    </div>
+    <br />
     <div>
       <p>
         {{placeDesciption}}
       </p>
     </div>
+    <div class="col-sm-4">
+      <app-review-card></app-review-card>
+    </div>
+    <div class="col-sm-4">
+      <app-review-card></app-review-card>
+    </div>
+    <div class="col-sm-4">
+      <app-review-card></app-review-card>
+    </div>
+    <div class="col-sm-4">
+      <app-review-card></app-review-card>
+    </div>
+    <div class="col-sm-4">
+      <app-review-card></app-review-card>
+    </div>
+    <div class="col-sm-4">
+      <app-review-card></app-review-card>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary">Walk</button>
+      <button type="button" class="btn btn-secondary">Drive</button>
+      <button type="button" class="btn btn-secondary">Fly</button>
+    </div>
+    <br />
+    <br />
+    <div>
+      <img src="" alt="Google Maps goes here"/>
+    </div>
+
 </div>

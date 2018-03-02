@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="card zoom">
+  <img src="{{ review.profilePic }}" alt="John">
+  <p>{{ review.firstname }} {{ review.lastname[0] }}.</p>
+  <p [innerHTML]="ratingString"></p>
+  <p class="blurb">
+    {{review.review}}
+  </p>
+  <p><button>View</button></p>
+</div>
