@@ -13,6 +13,8 @@ import { AccountPageComponent } from './account-page/account-page.component';
 import { PlaceComponent } from './place/place.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './Http.service';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,11 @@ import { UserPageComponent } from './user-page/user-page.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

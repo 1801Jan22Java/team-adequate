@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../Http.service';
 
 @Component({
   selector: 'app-search',
@@ -7,16 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.test();
   }
 
+  test():void{
+    this.httpService.test().subscribe( data => console.log("retrieved: " + data['high']));
+  }
 
   togglePeople() : void {
       this.searchPeople = !this.searchPeople
   }
-
+  
   changePriceString() : void {
     this.searchPriceString = '';
     for(var i = this.searchPrice; i >= 1; i--) {
