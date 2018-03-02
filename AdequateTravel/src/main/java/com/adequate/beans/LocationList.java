@@ -2,15 +2,38 @@ package com.adequate.beans;
 
 import java.util.List;
 
+import javax.persistence.*;
+
 import org.springframework.stereotype.Component;
 
+@Entity
+@Table(name="LOCATIONLIST")
 @Component(value="locationList")
 public class LocationList {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="locationListIdSequence")
+	@SequenceGenerator(allocationSize=1, name="locationListIdSequence",sequenceName="SQ_LOCATION_LIST_ID_PK")
+	@Column(name="LOCATION_LIST_ID")
 	private int locationID;
-	private int userID; // user that created the list
+	@Column(name="LIST_NAME")
 	private String listName;
-	private List<String> places; // placeIDs used by Google's PlacesAPI
+	
+	@ManyToMany
+	@JoinTable(
+				name="LOCATION_RELATION",
+				joinColumns = { @JoinColumn(name="LOCATION_LIST_ID") },
+				inverseJoinColumns = { @JoinColumn(name="LOCATION_ID") }
+			)
+	private List<Location> locations; // placeIDs used by Google's PlacesAPI
+	
+	@ManyToOne
+	@JoinColumn(name="PERSON_ID")
+	private Person person; // user that created the list
+
+	public int getLocationID() {
+		return locationID;
+	}
 
 	public String getListName() {
 		return listName;
@@ -20,20 +43,16 @@ public class LocationList {
 		this.listName = listName;
 	}
 
-	public List<String> getPlaces() {
-		return places;
+	public List<Location> getLocations() {
+		return locations;
 	}
 
-	public void setPlaces(List<String> places) {
-		this.places = places;
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
 	}
 
-	public int getLocationID() {
-		return locationID;
-	}
-
-	public int getUserID() {
-		return userID;
+	public Person getPerson() {
+		return person;
 	}
 
 }
