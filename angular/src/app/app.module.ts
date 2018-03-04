@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReviewCardComponent } from './review-card/review-card.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpService } from './Http.service';
+import { PlaceCardComponent } from './place-card/place-card.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HttpService } from './Http.service';
     UserCardComponent,
     UserPageComponent,
     ReviewCardComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PlaceCardComponent
     
   ],
   imports: [
