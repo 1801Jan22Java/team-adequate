@@ -1,4 +1,4 @@
-package com.revature.controller;
+package com.adequate.controller;
 
 import java.util.List;
 
@@ -21,8 +21,18 @@ import com.adequate.util.CurrentUser;
 @RequestMapping("/login")
 public class LoginController {
 
+	public LoginController() {
+		System.out.println("start");
+	}
+	
 	@Autowired 
 	PersonService pService;
+	
+	@RequestMapping(method=RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<String> test() {
+		return new ResponseEntity<>("success", HttpStatus.OK); 
+	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody

@@ -11,6 +11,12 @@ import org.springframework.stereotype.Component;
 @Component(value="personInfo")
 public class PersonInfo implements Serializable{
 
+	public PersonInfo(String firstname, String lastname) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+
 	/**
 	 * 
 	 */

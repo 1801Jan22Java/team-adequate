@@ -3,10 +3,12 @@ package com.adequate.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adequate.beans.Person;
 import com.adequate.repository.PersonDao;
 
+@Service("PersonService")
 public class PersonService implements PersonDao {
 
 	@Autowired
