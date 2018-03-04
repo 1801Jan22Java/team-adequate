@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user'
+import { HttpService } from '../Http.service';
 
 @Component({
   selector: 'app-account-page',
@@ -8,7 +9,7 @@ import { User } from '../user'
 })
 export class AccountPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
   }
@@ -24,4 +25,8 @@ export class AccountPageComponent implements OnInit {
     profilePic : "img.jpg"
   };
 
+  //Hook this up to the backend
+  updateInfo(){
+    this.httpService.test().subscribe( data => console.log("retrieved: " + data['high']));
+  }
 }

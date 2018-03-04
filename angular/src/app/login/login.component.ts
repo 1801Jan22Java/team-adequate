@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+  //Hook this up to the backend
   login(){
     this.httpService.test().subscribe( data => console.log("retrieved: " + data['high']));
   }
