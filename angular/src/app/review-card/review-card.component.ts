@@ -26,4 +26,10 @@ export class ReviewCardComponent implements OnInit {
     profilePic : "http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"
     };
 
+    viewCard(){
+      document.getElementById("reviewModalImage").setAttribute("src", this.review.profilePic);
+      document.getElementById("reviewModalname").innerText =  this.review.firstname + " " + this.review.lastname[0] + ".";
+      document.getElementById("reviewModalRating").innerHTML = this.ratingString.toString();
+      document.getElementById("reviewModalreview").innerText = this.review.review;
+    }
 }
