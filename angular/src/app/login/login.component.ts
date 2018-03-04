@@ -13,9 +13,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  username : string;
+  password : string;
 
   //Hook this up to the backend
   login(){
-    this.httpService.test().subscribe( data => console.log("retrieved: " + data['high']));
+    this.httpService.login(this.username, this.password).subscribe( data => console.log("retrieved: " + data['high']));
   }
 }

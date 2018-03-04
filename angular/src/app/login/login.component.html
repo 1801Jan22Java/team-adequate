@@ -15,8 +15,8 @@
   <div class="login-page">
     <div class="form">
       <form class="login-form">
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
+        <input type="text" [(ngModel)]="username" name="username" placeholder="username"/>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="password"/>
         <button (click)="login()">login</button>
         <p class="message">Not registered? <a href="/registration">Create an account</a></p>
       </form>
