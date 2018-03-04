@@ -1,0 +1,20 @@
+2018-03-02 13:49:19 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-03-02 13:49:19 INFO  Version:54 - HHH000412: Hibernate Core {4.3.11.Final}
+2018-03-02 13:49:19 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2018-03-02 13:49:19 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2018-03-02 13:49:19 INFO  Configuration:2075 - HHH000043: Configuring from resource: hibernate.cfg.xml
+2018-03-02 13:49:19 INFO  Configuration:2094 - HHH000040: Configuration resource: hibernate.cfg.xml
+2018-03-02 13:49:19 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2018-03-02 13:49:19 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2018-03-02 13:49:19 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@batemandemo.cuxmftdafrzc.us-east-1.rds.amazonaws.com:1521:ORCL]
+2018-03-02 13:49:19 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=batemangn, password=****}
+2018-03-02 13:49:19 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2018-03-02 13:49:19 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-03-02 13:49:20 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-03-02 13:49:20 WARN  RootClass:288 - HHH000038: Composite-id class does not override equals(): com.adequate.beans.PersonInfo
+2018-03-02 13:49:20 WARN  RootClass:289 - HHH000039: Composite-id class does not override hashCode(): com.adequate.beans.PersonInfo
+2018-03-02 13:49:20 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-03-02 13:49:20 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-03-02 13:49:20 INFO  PojoInstantiator:85 - HHH000182: No default (no-argument) constructor for class: com.adequate.beans.Review (class must be instantiated by Interceptor)
+2018-03-02 13:49:20 INFO  SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+2018-03-02 13:49:21 INFO  SchemaExport:406 - HHH000230: Schema export complete
