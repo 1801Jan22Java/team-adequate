@@ -32,7 +32,7 @@ public class LoginController {
 			if(p.getEmail().equals(person.getEmail())) {
 				if(p.getPassword().equals(person.getPassword()))
 				{
-					CurrentUser.login(person.getUserID(), person.getEmail(), person.getPassword());
+					CurrentUser.login(person.getPersonID(), person.getEmail(), person.getPassword());
 					return new ResponseEntity<>("success", HttpStatus.OK); 
 				}
 			}
