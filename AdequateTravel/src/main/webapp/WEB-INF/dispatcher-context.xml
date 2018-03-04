@@ -13,7 +13,7 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<!-- set up the View Resolver -->
-	<bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean name="ViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/pages/</value>
 		</property>
