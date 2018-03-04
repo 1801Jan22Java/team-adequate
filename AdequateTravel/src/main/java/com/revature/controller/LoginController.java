@@ -21,12 +21,17 @@ import com.adequate.util.CurrentUser;
 @RequestMapping("/login")
 public class LoginController {
 
+	public LoginController() {
+		System.out.println("start");
+	}
+	
 	@Autowired 
 	PersonService pService;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> login(@RequestBody Person person) {
+		System.out.println("here");
 		List<Person> people = pService.getAllPeople();
 		for(Person p : people) {
 			if(p.getEmail().equals(person.getEmail())) {
