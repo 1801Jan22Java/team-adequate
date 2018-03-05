@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SearchController {
 	
 	private final String geoCodingPrefix = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-	private final String geoCodingSuffix = "&key=AIzaSyA-cqeJ3xy8IXWiIffplTwOUqZODVvMBps";
+	private final String geoCodingSuffix = "&key=AIzaSyA4k2FBjButfxabh_rgO6DbK7_LSBQN538";
+	
+	private final String placePrefix = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=";
+	private final String placeSuffix = "&key=AIzaSyA-cqeJ3xy8IXWiIffplTwOUqZODVvMBps";
 	
 }
