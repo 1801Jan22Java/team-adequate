@@ -26,7 +26,7 @@ public class RegisterPersonController {
 	@ResponseBody
 	public ResponseEntity<String> registerPerson
 	(@RequestParam("email") String email, @RequestParam("password") String password,
-			@RequestParam("fname") String firstName, @RequestParam("lname") String lastName){
+	 @RequestParam("fname") String firstName, @RequestParam("lname") String lastName){
 		PersonInfo pi = new PersonInfo(firstName, lastName);
 		pService.addPerson(new Person(email, password, pi));
 		return new ResponseEntity<>("success", HttpStatus.OK);

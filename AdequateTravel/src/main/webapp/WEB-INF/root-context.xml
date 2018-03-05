@@ -14,7 +14,7 @@
 	
 	<!-- Data source -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oraclejdbc.driver.OracleDriver"/>
+	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<!-- <property name="url" value="" >  for DB url	--> 
 		<!-- username and password properties -->
 	</bean>
@@ -25,7 +25,7 @@
 		<property name="packagesToScan" value="com.adequate.beans"/>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect"></prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
 				<prop key="hiberante.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
@@ -33,7 +33,7 @@
 	</bean>
 	
 	<!-- Transaction manager -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate4.hibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	

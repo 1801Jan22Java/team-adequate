@@ -17,6 +17,8 @@ public class Review {
 		this.timeOfReview = timeOfReview;
 		this.rating = rating;
 	}
+	
+	public Review() {}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="reviewIdSequence")
