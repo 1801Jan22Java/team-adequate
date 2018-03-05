@@ -28,11 +28,11 @@ public class LoginController {
 	@Autowired 
 	RealPersonService pService;
 	
-	@RequestMapping(method=RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<String> test() {
-		return new ResponseEntity<>("success", HttpStatus.OK); 
-	}
+//	@RequestMapping(method=RequestMethod.POST)
+//	@ResponseBody
+//	public ResponseEntity<String> test() {
+//		return new ResponseEntity<>("success", HttpStatus.OK); 
+//	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
