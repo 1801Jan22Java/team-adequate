@@ -2,13 +2,15 @@ package com.adequate.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.adequate.beans.Person;
+import com.adequate.util.HibernateUtil;
 
 @Repository("personRepository")
 @Transactional
@@ -20,7 +22,8 @@ public class PersonDaoImpl implements PersonDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Person> getAllPeople() {
-		Session s = sessionFactory.getCurrentSession();
+		//Session s = sessionFactory.getCurrentSession(); //TODO::This should work... but it doesnt
+		Session s = HibernateUtil.getSession();
 		List<Person> peopleList = s.createCriteria(Person.class).list();
 		return peopleList;
 	}
