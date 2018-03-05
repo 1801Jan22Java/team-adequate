@@ -28,28 +28,27 @@ public class LoginController {
 	@Autowired 
 	RealPersonService pService;
 	
-//	@RequestMapping(method=RequestMethod.POST)
-//	@ResponseBody
-//	public ResponseEntity<String> test() {
-//		return new ResponseEntity<>("success", HttpStatus.OK); 
-//	}
-	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> login(@RequestBody Person person) {
+		
+		System.out.println("recieved username: " + person.getEmail() + " Password:" + person.getPassword());
+		
 		List<Person> people = pService.getAllPeople();
-		// int personID = pService.getIdByEmail(person.getEmail());
-		for(Person p : people) {
-			if(p.getEmail().equals(person.getEmail())) {
-				if(p.getPassword().equals(person.getPassword()))
-				{
-					CurrentUser.login(person.getPersonID(), person.getEmail(), person.getPassword());
-					return new ResponseEntity<>("success", HttpStatus.OK); 
+		
+		if(people != null) {
+			for(Person p : people) {
+				if(p.getEmail().equals(person.getEmail())) {
+					if(p.getPassword().equals(person.getPassword()))
+					{
+						CurrentUser.login(person.getPersonID(), person.getEmail(), person.getPassword());
+						System.out.println("Logged in!");
+						return new ResponseEntity<>("success", HttpStatus.OK); 
+					}
 				}
 			}
 		}
-		
-		return new ResponseEntity<>("failure", HttpStatus.OK);
+		return new ResponseEntity<>("failed to login", HttpStatus.OK);
 		
 	}
 	
