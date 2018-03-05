@@ -6,7 +6,9 @@ import com.adequate.beans.Review;
 
 public interface ReviewDao {
 
-	public List<Review> getAllReviews();
+	public List<Review> getReviewsByPerson(int personID);
+	
+	public List<Review> getReviewsByPlace(String placeID);
 
 	public Review getReviewById(int id);
 

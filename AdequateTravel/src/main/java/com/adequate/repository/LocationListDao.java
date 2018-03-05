@@ -6,7 +6,7 @@ import com.adequate.beans.LocationList;
 
 public interface LocationListDao {
 	
-	public List<LocationList> getAllLocationLists();
+	public List<LocationList> getAllLocationLists(int personID);
 	
 	public LocationList getLocationListById(int id);
 	
