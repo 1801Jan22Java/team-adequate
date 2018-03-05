@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.adequate.beans.Person;
 
+
 public interface PersonDao {
 	
 	public List<Person> getAllPeople();
