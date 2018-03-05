@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adequate.beans.Person;
 import com.adequate.beans.PersonInfo;
-import com.adequate.service.PersonService;
+import com.adequate.service.RealPersonService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller("registerPersonController")
@@ -20,7 +20,7 @@ import com.adequate.service.PersonService;
 public class RegisterPersonController {
 	
 	@Autowired 
-	PersonService pService;
+	RealPersonService pService;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
