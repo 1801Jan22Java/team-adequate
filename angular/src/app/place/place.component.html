@@ -40,35 +40,23 @@
 
 
     <div class="title">
-      <h1>{{placeName}}</h1>
+      <h1>{{ place.name }}</h1>
     </div>
     <br />
     <div class="title">
-      <h4 [innerHTML]="numStars"></h4>
+      <h4 [innerHTML]="ratingString"></h4>
     </div>
     <br />
     <div>
       <p>
-        {{placeDesciption}}
+        {{ place.description }}
       </p>
     </div>
-    <div class="col-sm-4">
-      <app-review-card></app-review-card>
-    </div>
-    <div class="col-sm-4">
-      <app-review-card></app-review-card>
-    </div>
-    <div class="col-sm-4">
-      <app-review-card></app-review-card>
-    </div>
-    <div class="col-sm-4">
-      <app-review-card></app-review-card>
-    </div>
-    <div class="col-sm-4">
-      <app-review-card></app-review-card>
-    </div>
-    <div class="col-sm-4">
-      <app-review-card></app-review-card>
+    <div *ngFor="let inputReview of listReviews">
+      <!-- {{inputReview.username}} -->
+      <div class="col-sm-4">
+        <app-review-card [review]="inputReview"></app-review-card>
+      </div>
     </div>
 
     <div class="btn-group" role="group" aria-label="Basic example">
@@ -103,7 +91,7 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
-      
+
         </div>
       </div>
 

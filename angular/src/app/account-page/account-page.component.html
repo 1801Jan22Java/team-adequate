@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-sm-6">
-        <h1> Account </h1><br>
+        <h1 class="title"> Account </h1><br>
         <!-- Should be a fixed size image -->
         <img src="http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg" class="img-rounded .img-responsive" alt="Profile Picture" height="256" width="256">
         <br />
@@ -14,19 +14,19 @@
     <div class="col-sm-6">
         <div>
             <br><br><br><br>
-            <label for="username"> Username </label><br>
-            <input type="text" id="username" [value]="user.username"/>
+            <label class="title" for="username"> Username </label><br>
+            <input class="title" type="text" id="username" [value]="user.username"/>
             <br><br>
         </div>
         <div>
-            <label for="firstname"> First Name </label><br>
-            <input type="text" id="firstname" [value]="user.firstname"/>
+            <label class="title" for="firstname"> First Name </label><br>
+            <input class="title" type="text" id="firstname" [value]="user.firstname"/>
             <br><br>
         </div>
 
         <div>
-            <label for="lastname"> Last Name </label><br>
-            <input type="text" id="lastname" [value]="user.lastname"/>
+            <label class="title" for="lastname"> Last Name </label><br>
+            <input class="title" type="text" id="lastname" [value]="user.lastname"/>
             <br><br>
         </div>
         <br>
@@ -36,8 +36,8 @@
 
   <div >
         <br>
-        <label for="desc">Bio</label>
-        <textarea class="form-control" rows="5" id="desc" placeholder="{{user.description}}"></textarea>
+        <label class="title" for="desc">About You</label>
+        <textarea class="form-control" rows="5" id="desc" [innerHTML]="user.description"></textarea>
   </div>
 
   <br>
@@ -48,21 +48,14 @@
 
   <button data-toggle="collapse" data-target="#saved">Saved Trips</button>
 
-<!-- Loop through list of saved places here *ngFor -->
     <div id="saved" class="collapse">
         <br>
-        <div class="col-sm-4">
-            <app-user-card></app-user-card>
+        <div *ngFor="let inputPlace of listPlaces">
+          <div class="col-sm-4">
+              <app-place-card [place]="inputPlace"></app-place-card>
+          </div>
         </div>
-        <div class="col-sm-4">
-            <app-user-card></app-user-card>
-        </div>
-        <div class="col-sm-4">
-            <app-user-card></app-user-card>
-        </div>
-        <div class="col-sm-4">
-            <app-user-card></app-user-card>
-        </div>
+
     </div>
 
 

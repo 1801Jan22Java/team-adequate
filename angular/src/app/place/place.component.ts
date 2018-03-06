@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PopulateService } from '../populate.service';
+import { Place } from '../place';
+import { Review } from '../review';
 
 @Component({
   selector: 'app-place',
@@ -7,15 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private populateService : PopulateService) { }
 
   ngOnInit() {
-    for(var i = 4; i >= 1; i--) {
-      this.numStars += ' &#x272F;';
+    this.place = this.populateService.populatePlace();
+    this.populateListReviews();
+    this.createRatingString();
+  }
+
+  createRatingString() {
+    for(var i = 0; i <= this.place.rating; i++) {
+      this.ratingString += ' &#x272F;';
     }
   }
-  numStars : String = 'Rating';
-  placeName : String = 'temp name';
-  placeDesciption : String = 'There\'s not a thing in the world wrong with washing your brush. Anything you want to do you can do here. Just relax and let it flow. That easy. You have to allow the paint to break to make it beautiful. How do you make a round circle with a square knife? That\'s your challenge for the day. And just raise cain.'
 
+  populateListReviews() {
+    this.listReviews = this.populateService.populateReviews();
+  }
+
+  listReviews : Review [] = [];
+  place : Place;
+  ratingString : string = 'Rating ';
 }

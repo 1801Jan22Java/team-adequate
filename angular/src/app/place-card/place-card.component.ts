@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Place } from '../place'
 
 @Component({
@@ -8,17 +8,20 @@ import { Place } from '../place'
 })
 export class PlaceCardComponent implements OnInit {
 
+  @Input() place : Place;
+
   constructor() { }
 
   ngOnInit() {
+    this.createRatingString();
   }
 
-  place : Place = {
-    id : 0,
-    rating : 0,
-    name : "temp name",
-    description : "temp text",
-    placePictures : [],
-  };
+  createRatingString() {
+    for(var i = 0; i <= this.place.rating; i++) {
+      this.ratingString += ' &#x272F;';
+    }
+  }
+
+  ratingString : string = 'Rating ';
 
 }

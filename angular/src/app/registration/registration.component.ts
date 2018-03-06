@@ -14,12 +14,12 @@ export class RegistrationComponent implements OnInit {
   regpassword : string;
   regfirstname : string;
   reglastname : string;
+  invalidEmail : boolean = true;
 
   ngOnInit() {
   }
 
   register(){
-    //firstname: string, lastname:string, username: string, password: string
     this.httpService.register(this.regfirstname, this.reglastname, this.regusername, this.regpassword).subscribe(data => console.log("reged: "));
     }
 }

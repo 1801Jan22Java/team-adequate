@@ -1,9 +1,11 @@
 <app-navigation></app-navigation>
 
 <div class="form container text-center">
+<div class="row">
+
 
     <div class="col-sm-6">
-        <h1> {{user.username}} </h1><br>
+        <h1 class="title"> {{user.username}} </h1><br>
         <!-- Should be a fixed size image -->
         <div class= "profilePic">
           <img src="{{user.profilePic}}" class="img-rounded .img-responsive" alt="Profile Picture" height="256" width="256">
@@ -13,52 +15,38 @@
     <div class="col-sm-6">
         <div>
             <br><br><br><br>
-            <label for="username"> Username </label><br>
-            <p id="username"> {{user.username}} </p>
             <br><br>
         </div>
         <div>
-            <label for="firstname"> First Name </label><br>
-            <p id="firstname"> {{user.firstname}} </p>
+            <label class="title" for="name"> Name </label><br>
+            <p id="name"> {{user.firstname}} {{user.lastname}}</p>
             <br><br>
         </div>
 
         <div>
-            <label for="lastname"> Last Name </label><br>
-            <p id="lastname"> {{user.lastname}} </p>
+              <label class="title" for="desc">About {{user.firstname}}</label>
+              <p id="desc"> {{user.description}} </p>
         </div>
 
         <br><br><br>
     </div>
-
-  <div>
-        <label for="desc">Bio</label>
-        <p id="desc"> {{user.description}} </p>
-  </div>
+</div>
 
   <br>
   <br>
 
   <br><br><br>
-
-  <button data-toggle="collapse" data-target="#saved">Saved Trips</button>
+  <div>
+    <button data-toggle="collapse" data-target="#saved">Saved Trips</button>
+  </div>
 
 <!-- Loop through list of saved places here *ngFor -->
     <div id="saved" class="collapse">
-        <br>
-        <div class="col-sm-6">
-            <app-user-card></app-user-card>
+      <div *ngFor="let inputPlace of listPlaces">
+        <div class="col-sm-4">
+            <app-place-card [place]="inputPlace"></app-place-card>
         </div>
-        <div class="col-sm-6">
-            <app-user-card></app-user-card>
-        </div>
-        <br>
-        <div class="col-sm-6">
-            <app-user-card></app-user-card>
-        </div>
-        <div class="col-sm-6">
-            <app-user-card></app-user-card>
-        </div>
+      </div>
     </div>
 
 

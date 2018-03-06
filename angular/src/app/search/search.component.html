@@ -14,10 +14,10 @@
       <div class="login-form">
 
             <input type="text" placeholder="Find an adequate trip!"/>
-            <button type="submit" class="btn btn-default" data-toggle="collapse" data-target="#search">Search</button>
+            <button type="submit" class="btn btn-default">Search</button>
       </div>
+        <p *ngIf="searchPeople" data-toggle="collapse" class="advancedToggle" data-target="#advanced" (click)="toggleAdvanced()" [innerHTML]="advancedString"></p>
 
-      <p *ngIf="searchPeople" data-toggle="collapse" class="advancedToggle" data-target="#advanced">Advanced</p>
   </form>
   <br *ngIf="!searchPeople" />
   <div>
@@ -64,21 +64,6 @@
         </div>
       </div>
 
-    </div>
-
-    <div id="search" class="collapse">
-      <div class="col-sm-4">
-          <app-user-card></app-user-card>
-      </div>
-      <div class="col-sm-4">
-          <app-user-card></app-user-card>
-      </div>
-      <div class="col-sm-4">
-          <app-user-card></app-user-card>
-      </div>
-      <div class="col-sm-4">
-          <app-user-card></app-user-card>
-      </div>
     </div>
 
 </div>

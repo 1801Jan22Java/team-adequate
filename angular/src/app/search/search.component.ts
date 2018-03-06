@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../Http.service';
+import { Place } from '../place';
+import { User } from '../user';
 
 @Component({
   selector: 'app-search',
@@ -18,10 +20,20 @@ export class SearchComponent implements OnInit {
     this.httpService.test().subscribe( data => console.log("retrieved: " + data['high']));
   }
 
+  toggleAdvanced() : void {
+    if (this.advancedToggle) {
+      this.advancedString = "▼ Advanced";
+      this.advancedToggle = !this.advancedToggle;
+    } else {
+      this.advancedString = "► Advanced";
+      this.advancedToggle = !this.advancedToggle;
+    }
+  }
+
   togglePeople() : void {
       this.searchPeople = !this.searchPeople
   }
-  
+
   changePriceString() : void {
     this.searchPriceString = '';
     for(var i = this.searchPrice; i >= 1; i--) {
@@ -42,7 +54,10 @@ export class SearchComponent implements OnInit {
   searchDistance : number = 10;
   searchPrice : number = 1;
   searchRating : number = 1;
-
+  advancedToggle : boolean = true;
+  advancedString : string = "► Advanced";
   searchPriceString : string = '$';
   searchRatingString :string =  'Rating: &#x272F;';
+  listUsers : User [] = [];
+  listPlaces : Place [] = [];
 }

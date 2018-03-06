@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PopulateService } from '../populate.service';
 import { User } from '../user'
+import { Place } from '../place';
 
 @Component({
   selector: 'app-user-page',
@@ -8,19 +10,15 @@ import { User } from '../user'
 })
 export class UserPageComponent implements OnInit {
 
-  constructor() { }
+  //@Input() user : User; //TODO: ???? ashould have input or pull from DB?????
+
+  constructor(private populateService: PopulateService) { }
 
   ngOnInit() {
+    this.user = this.populateService.populateUsers()[0];
+    this.listPlaces = this.populateService.populatePlaces();
   }
-
-  user : User = {
-    id : 0,
-
-    username : "username",
-    firstname : "firstname",
-    lastname : "lastname",
-    description : "This is a test description for the user",
-    profilePic : "https://tse4.mm.bing.net/th?id=OIP.dfuGcOmQ7cyBB2Zeuc8IQQHaHa&pid=Api"
-  };
+  user : User;
+  listPlaces : Place [] = []
 
 }

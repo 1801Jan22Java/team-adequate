@@ -19,6 +19,7 @@ import { ReviewCardComponent } from './review-card/review-card.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpService } from './Http.service';
 import { PlaceCardComponent } from './place-card/place-card.component';
+import { PopulateService } from './populate.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { PlaceCardComponent } from './place-card/place-card.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, PopulateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
