@@ -40,7 +40,7 @@ export class HttpService {
     headers.append('Content-Type', 'application/json');
 
     const options = new RequestOptions({headers: headers});
-    console.log(firstname + password)
+    console.log(firstname + password + lastname + username)
     return this.http.post(baseUrl + 'register',
     JSON.stringify({email: username, fname: firstname, lname: lastname, password: password}),
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
@@ -61,7 +61,7 @@ export class HttpService {
 
   validateUser(){
 
-    /*
+    
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -71,7 +71,7 @@ export class HttpService {
     '{}',
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
-    */
+    
   }
   
   getAccountInfo(){
@@ -79,6 +79,6 @@ export class HttpService {
   }
 
   updateAccountInfo(){
-    
+
   }
 }

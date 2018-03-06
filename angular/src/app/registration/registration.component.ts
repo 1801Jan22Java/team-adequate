@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../Http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +9,7 @@ import { HttpService } from '../Http.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private httpService: HttpService) { }
+  constructor(private router: Router, private httpService: HttpService) { }
 
   regusername : string;
   regpassword : string;
@@ -20,6 +21,14 @@ export class RegistrationComponent implements OnInit {
   }
 
   register(){
-    this.httpService.register(this.regfirstname, this.reglastname, this.regusername, this.regpassword).subscribe(data => console.log("reged: "));
+    this.httpService.register(this.regfirstname, this.reglastname, this.regusername, this.regpassword).subscribe(
+      data => {if(data['status'] == 'success'){
+        this.router.navigateByUrl('/login');
+      }
+      else{
+        //TODO:: make something happen here to let user know they done messed up
+        console.log('Invalid login!');
+      }
+    })
     }
 }
