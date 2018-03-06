@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../Http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private httpService: HttpService) { }
 
   ngOnInit() {
+    console.log("Check logged in...");
+    this.httpService.validateUser().subscribe(
+        data => {
+        if(data['status'] == 'success'){
+          console.log("User is valid!");
+        }
+        else{
+          //Invalid user, redirect to home
+          this.router.navigateByUrl('/login');
+        }
+    })
   }
 
+  logout(){
+
+    this.httpService.logout().subscribe( data => this.router.navigateByUrl('/login'));
+
+  }
 }

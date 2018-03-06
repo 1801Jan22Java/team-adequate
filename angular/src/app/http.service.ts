@@ -7,7 +7,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 
 
 //const baseUrl : string = 'http://ec2-18-218-126-211.us-east-2.compute.amazonaws.com:8080/AdequateTravel/';
-const baseUrl : string = 'http://localhost:8084/AdequateTravel/';
+const baseUrl : string = 'http://localhost:8080/AdequateTravel/';
 //http://localhost:8080/AdequateTravel/login
 
 @Injectable()
@@ -40,10 +40,45 @@ export class HttpService {
     headers.append('Content-Type', 'application/json');
 
     const options = new RequestOptions({headers: headers});
-
+    console.log(firstname + password)
     return this.http.post(baseUrl + 'register',
     JSON.stringify({email: username, fname: firstname, lname: lastname, password: password}),
-    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*'}}
+    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
+  }
+
+  logout(){
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+    console.log("logout")
+    return this.http.get(baseUrl + 'logout',
+    '{}',
+    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
+    );
+  }
+
+  validateUser(){
+
+    /*
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+    console.log("logout")
+    return this.http.get(baseUrl + 'validate',
+    '{}',
+    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
+    );
+    */
+  }
+  
+  getAccountInfo(){
+
+  }
+
+  updateAccountInfo(){
+    
   }
 }
