@@ -33,9 +33,27 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<String> updateProfile(@RequestBody Person person){
-		Person oldPerson = personService.getPersonById(CurrentUser.getUserID());
+	public ResponseEntity<String> updateProfile(@RequestBody PersonInfo clientInfo){
 		PersonInfo oldPersonInfo = personInfoService.getInfoById(CurrentUser.getUserID());
+		PersonInfo newPersonInfo = new PersonInfo(personService.getPersonById(oldPersonInfo.getPersonID()), 
+												  oldPersonInfo.getFirstname(), oldPersonInfo.getLastname(),
+												  oldPersonInfo.getAbout(), oldPersonInfo.getImage());
+		// assigning oldPersonInfo to newPersonInfo, to be overwritten if it differs from clientInfo
+		
+		if(!clientInfo.getFirstname().equals(newPersonInfo.getFirstname())) {
+			newPersonInfo.setFirstname(clientInfo.getFirstname());
+		}
+		if(!clientInfo.getLastname().equals(newPersonInfo.getLastname())) {
+			newPersonInfo.setLastname(clientInfo.getLastname());
+		}
+		if(!clientInfo.getAbout().equals(newPersonInfo.getAbout())){
+			newPersonInfo.setAbout(clientInfo.getAbout());
+		}
+		if(!clientInfo.getImage().equals(newPersonInfo.getImage())) {
+			newPersonInfo.setImage(clientInfo.getImage());
+		}
+		personInfoService.addPersonInfo(newPersonInfo);
+		
 		
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
