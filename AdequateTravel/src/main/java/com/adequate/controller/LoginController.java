@@ -3,7 +3,6 @@ package com.adequate.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,10 +20,6 @@ import com.adequate.util.CurrentUser;
 @Controller("loginController")
 @RequestMapping("/login")
 public class LoginController {
-
-	//public LoginController() {
-	//	System.out.println("start");
-	//}
 	
 	@Autowired 
 	RealPersonService pService;
@@ -33,26 +28,21 @@ public class LoginController {
 	@ResponseBody
 	public ResponseEntity<String> login(@RequestBody Person person) {
 		
-		System.out.println("recieved username: " + person.getEmail() + " Password:" + person.getPassword());
-		System.out.println("Logged in!");
-		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED); 
-		
-//		List<Person> people = pService.getAllPeople();
-//		return new ResponseEntity<>("success", headers, HttpStatus.FOUND); 
-//		if(people != null) {
-//			for(Person p : people) {
-//				if(p.getEmail().equals(person.getEmail())) {
-//					if(p.getPassword().equals(person.getPassword()))
-//					{
-//						CurrentUser.login(person.getPersonID(), person.getEmail(), person.getPassword());
-//						
-//						System.out.println("Logged in!");
-//						return new ResponseEntity<>("success", headers, HttpStatus.FOUND); 
-//					}
-//				}
-//			}
-//		}
-//		return new ResponseEntity<>("failed to login", HttpStatus.FAILED_DEPENDENCY);
+		List<Person> people = pService.getAllPeople();
+		if(people != null) {
+			for(Person p : people) {
+				if(p.getEmail().equals(person.getEmail())) {
+					if(p.getPassword().equals(person.getPassword()))
+					{
+						CurrentUser.login(person.getPersonID(), person.getEmail(), person.getPassword());
+					
+						System.out.println("Logged in!");
+						return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
+					}
+				}
+			}
+		}
+		return new ResponseEntity<>("failed to login", HttpStatus.FAILED_DEPENDENCY);
 		
 	}
 	
