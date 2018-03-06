@@ -5,14 +5,14 @@ import java.util.Arrays;
 class PlaceSearchResult {
 	private String name;
 	private String place_id;
-	private Photo photos;
+	private Photo [] photos;
 	private String[] types;
 
 	public PlaceSearchResult() {
 		super();
 	}
 
-	public PlaceSearchResult(String name, String place_id, Photo photos, String[] types) {
+	public PlaceSearchResult(String name, String place_id, Photo [] photos, String[] types) {
 		super();
 		this.name = name;
 		this.place_id = place_id;
@@ -36,11 +36,11 @@ class PlaceSearchResult {
 		this.place_id = place_id;
 	}
 
-	public Photo getPhotos() {
+	public Photo [] getPhotos() {
 		return photos;
 	}
 
-	public void setPhotos(Photo photos) {
+	public void setPhotos(Photo [] photos) {
 		this.photos = photos;
 	}
 
