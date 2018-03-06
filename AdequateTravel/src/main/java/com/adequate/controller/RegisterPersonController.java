@@ -1,5 +1,6 @@
 package com.adequate.controller;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,7 +58,12 @@ public class RegisterPersonController {
 	@ResponseBody
 	public ResponseEntity<String> registerPerson (@RequestBody CreatedPerson person){
 		System.out.println("received: " + person.getEmail() + person.getFname() + person.getLname() + person.getPassword());
+		try {
 		pService.addPerson(new Person(person.getEmail(), person.getPassword(), person.getFname(), person.getLname()));
-		return new ResponseEntity<>("success", HttpStatus.OK);
+		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
+		}
+		catch(ConstraintViolationException e) {
+			return new ResponseEntity<>("{\"status\":\"fail\"}", HttpStatus.ACCEPTED);
+		}
 	}
 }

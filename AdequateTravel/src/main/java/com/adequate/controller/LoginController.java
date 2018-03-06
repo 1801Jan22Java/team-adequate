@@ -37,7 +37,7 @@ public class LoginController {
 						CurrentUser.login(person.getPersonID(), person.getEmail(), person.getPassword());
 					
 						System.out.println("Logged in!");
-						return new ResponseEntity<>("success", HttpStatus.FOUND); 
+						return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 					}
 				}
 			}
