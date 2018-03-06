@@ -17,7 +17,6 @@
 		<mapping class="com.adequate.beans.LocationList"/>
 		<mapping class="com.adequate.beans.Review"/>
 		<mapping class="com.adequate.beans.Person"/>
-		<mapping class="com.adequate.beans.PersonInfo"/>
 		<mapping class="com.adequate.beans.Location"/>
 	</session-factory>
 </hibernate-configuration>

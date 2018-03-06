@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adequate.beans.Person;
-import com.adequate.beans.PersonInfo;
 import com.adequate.service.RealPersonService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,8 +26,7 @@ public class RegisterPersonController {
 	public ResponseEntity<String> registerPerson
 	(@RequestParam("email") String email, @RequestParam("password") String password,
 	 @RequestParam("fname") String firstName, @RequestParam("lname") String lastName){
-		PersonInfo pi = new PersonInfo(firstName, lastName);
-		pService.addPerson(new Person(email, password, pi));
+		pService.addPerson(new Person(email, password, firstName, lastName));
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}
 	

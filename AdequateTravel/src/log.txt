@@ -18,3 +18,109 @@
 2018-03-02 13:49:20 INFO  PojoInstantiator:85 - HHH000182: No default (no-argument) constructor for class: com.adequate.beans.Review (class must be instantiated by Interceptor)
 2018-03-02 13:49:20 INFO  SchemaExport:344 - HHH000227: Running hbm2ddl schema export
 2018-03-02 13:49:21 INFO  SchemaExport:406 - HHH000230: Schema export complete
+2018-03-06 12:37:53 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-03-06 12:37:53 INFO  Version:54 - HHH000412: Hibernate Core {4.3.11.Final}
+2018-03-06 12:37:53 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2018-03-06 12:37:53 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2018-03-06 12:37:53 INFO  Configuration:2075 - HHH000043: Configuring from resource: hibernate.cfg.xml
+2018-03-06 12:37:53 INFO  Configuration:2094 - HHH000040: Configuration resource: hibernate.cfg.xml
+2018-03-06 12:37:53 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2018-03-06 12:37:53 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2018-03-06 12:37:53 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@batemandemo.cuxmftdafrzc.us-east-1.rds.amazonaws.com:1521:ORCL]
+2018-03-06 12:37:53 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=batemangn, password=****}
+2018-03-06 12:37:53 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2018-03-06 12:37:53 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-03-06 12:37:54 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-03-06 12:37:54 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-03-06 12:37:54 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-03-06 12:38:23 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-03-06 12:38:23 INFO  Version:54 - HHH000412: Hibernate Core {4.3.11.Final}
+2018-03-06 12:38:23 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2018-03-06 12:38:23 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2018-03-06 12:38:23 INFO  Configuration:2075 - HHH000043: Configuring from resource: hibernate.cfg.xml
+2018-03-06 12:38:23 INFO  Configuration:2094 - HHH000040: Configuration resource: hibernate.cfg.xml
+2018-03-06 12:38:23 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2018-03-06 12:38:23 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2018-03-06 12:38:23 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@batemandemo.cuxmftdafrzc.us-east-1.rds.amazonaws.com:1521:ORCL]
+2018-03-06 12:38:23 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=batemangn, password=****}
+2018-03-06 12:38:23 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2018-03-06 12:38:23 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-03-06 12:38:24 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-03-06 12:38:24 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-03-06 12:38:24 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-03-06 13:15:41 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-03-06 13:15:41 INFO  Version:54 - HHH000412: Hibernate Core {4.3.11.Final}
+2018-03-06 13:15:41 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2018-03-06 13:15:41 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2018-03-06 13:15:41 INFO  Configuration:2075 - HHH000043: Configuring from resource: hibernate.cfg.xml
+2018-03-06 13:15:41 INFO  Configuration:2094 - HHH000040: Configuration resource: hibernate.cfg.xml
+2018-03-06 13:15:41 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2018-03-06 13:15:41 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2018-03-06 13:15:41 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@batemandemo.cuxmftdafrzc.us-east-1.rds.amazonaws.com:1521:ORCL]
+2018-03-06 13:15:41 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=batemangn, password=****}
+2018-03-06 13:15:41 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2018-03-06 13:15:41 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-03-06 13:15:42 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-03-06 13:15:42 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-03-06 13:15:42 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-03-06 13:15:42 INFO  SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+2018-03-06 13:15:44 INFO  SchemaExport:406 - HHH000230: Schema export complete
+2018-03-06 13:20:06 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2018-03-06 13:20:06 INFO  Version:54 - HHH000412: Hibernate Core {4.3.11.Final}
+2018-03-06 13:20:06 INFO  Environment:239 - HHH000206: hibernate.properties not found
+2018-03-06 13:20:06 INFO  Environment:346 - HHH000021: Bytecode provider name : javassist
+2018-03-06 13:20:06 INFO  Configuration:2075 - HHH000043: Configuring from resource: hibernate.cfg.xml
+2018-03-06 13:20:06 INFO  Configuration:2094 - HHH000040: Configuration resource: hibernate.cfg.xml
+2018-03-06 13:20:06 INFO  Configuration:2216 - HHH000041: Configured SessionFactory: null
+2018-03-06 13:20:07 WARN  DriverManagerConnectionProviderImpl:93 - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2018-03-06 13:20:07 INFO  DriverManagerConnectionProviderImpl:166 - HHH000401: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@batemandemo.cuxmftdafrzc.us-east-1.rds.amazonaws.com:1521:ORCL]
+2018-03-06 13:20:07 INFO  DriverManagerConnectionProviderImpl:175 - HHH000046: Connection properties: {user=batemangn, password=****}
+2018-03-06 13:20:07 INFO  DriverManagerConnectionProviderImpl:180 - HHH000006: Autocommit mode: false
+2018-03-06 13:20:07 INFO  DriverManagerConnectionProviderImpl:102 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-03-06 13:20:07 INFO  Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-03-06 13:20:07 INFO  TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2018-03-06 13:20:07 INFO  ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-03-06 13:20:08 INFO  SchemaUpdate:207 - HHH000228: Running hbm2ddl schema update
+2018-03-06 13:20:08 INFO  SchemaUpdate:218 - HHH000102: Fetching database metadata
+2018-03-06 13:20:08 INFO  SchemaUpdate:230 - HHH000396: Updating schema
+2018-03-06 13:20:08 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.ITINERARY
+2018-03-06 13:20:08 INFO  TableMetadata:66 - HHH000037: Columns: [itinerary_id, categories, parameters, person_id]
+2018-03-06 13:20:08 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_22qvjaek52djm802qw3c3rkbu]
+2018-03-06 13:20:08 INFO  TableMetadata:69 - HHH000126: Indexes: [sys_c005946]
+2018-03-06 13:20:09 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.ITINERARY_LOCATION
+2018-03-06 13:20:09 INFO  TableMetadata:66 - HHH000037: Columns: [itinerary_id, location_id]
+2018-03-06 13:20:09 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_npbcs34gccqdeus5jr12n1ov5, fk_4d1h5ajotn1x11pahdc89p7lr]
+2018-03-06 13:20:09 INFO  TableMetadata:69 - HHH000126: Indexes: []
+2018-03-06 13:20:09 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.LOCATION
+2018-03-06 13:20:09 INFO  TableMetadata:66 - HHH000037: Columns: [placeid, location_id]
+2018-03-06 13:20:09 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2018-03-06 13:20:09 INFO  TableMetadata:69 - HHH000126: Indexes: [sys_c005950]
+2018-03-06 13:20:09 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.LOCATIONLIST
+2018-03-06 13:20:09 INFO  TableMetadata:66 - HHH000037: Columns: [location_list_id, list_name, person_id]
+2018-03-06 13:20:09 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_274m64wmhe1xow4epi5o1axdw]
+2018-03-06 13:20:09 INFO  TableMetadata:69 - HHH000126: Indexes: [sys_c005952]
+2018-03-06 13:20:09 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.LOCATION_RELATION
+2018-03-06 13:20:09 INFO  TableMetadata:66 - HHH000037: Columns: [location_list_id, location_id]
+2018-03-06 13:20:09 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_m8psk6d8wk7vv47ymgelco78e, fk_5sffrxhs9d9jcsf1lkr49m063]
+2018-03-06 13:20:09 INFO  TableMetadata:69 - HHH000126: Indexes: []
+2018-03-06 13:20:10 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.LOCATION_REVIEW
+2018-03-06 13:20:10 INFO  TableMetadata:66 - HHH000037: Columns: [location_location_id, reviews_review_id]
+2018-03-06 13:20:10 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_qy0gdbtt4rkcb12x1q8qq0kv2, fk_464v72w34vpawc8kf4m2896la]
+2018-03-06 13:20:10 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_qy0gdbtt4rkcb12x1q8qq0kv2]
+2018-03-06 13:20:10 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.PERSON
+2018-03-06 13:20:10 INFO  TableMetadata:66 - HHH000037: Columns: [person_email, about, last_name, person_password, first_name, person_image, person_id]
+2018-03-06 13:20:10 INFO  TableMetadata:68 - HHH000108: Foreign keys: []
+2018-03-06 13:20:10 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_7p2po2t3ggltf7acq51aj7yka, sys_c005958]
+2018-03-06 13:20:10 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.PERSON_ITINERARY
+2018-03-06 13:20:10 INFO  TableMetadata:66 - HHH000037: Columns: [person_person_id, itineraries_itinerary_id]
+2018-03-06 13:20:10 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_jx8np5n6kt6yaomgmu36aelyu, fk_8jifv7q6mtkterrfd5f03mi2u]
+2018-03-06 13:20:10 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_8jifv7q6mtkterrfd5f03mi2u]
+2018-03-06 13:20:11 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.PERSON_LOCATIONLIST
+2018-03-06 13:20:11 INFO  TableMetadata:66 - HHH000037: Columns: [person_person_id, locationlists_location_list_id]
+2018-03-06 13:20:11 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_j46937tytcje3bc19gtoe0m2w, fk_70nouw15a6ropq8euocchgmja]
+2018-03-06 13:20:11 INFO  TableMetadata:69 - HHH000126: Indexes: [uk_j46937tytcje3bc19gtoe0m2w]
+2018-03-06 13:20:11 INFO  TableMetadata:65 - HHH000261: Table found: BATEMANGN.REVIEW
+2018-03-06 13:20:11 INFO  TableMetadata:66 - HHH000037: Columns: [review_id, review_date, rating, location_id, review_body, person_id]
+2018-03-06 13:20:11 INFO  TableMetadata:68 - HHH000108: Foreign keys: [fk_acqyy9h9nvd7awvjf7urmii14, fk_1iakako7spim6mxp9m89wse8e]
+2018-03-06 13:20:11 INFO  TableMetadata:69 - HHH000126: Indexes: [sys_c005965]
+2018-03-06 13:20:11 INFO  SchemaUpdate:267 - HHH000232: Schema update complete
