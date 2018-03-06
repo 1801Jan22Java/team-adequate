@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,7 +39,10 @@ public class PersonDaoImpl implements PersonDao{
 	@Override
 	public void addPerson(Person p) {
 		Session s = sessionFactory.openSession();
+		Transaction tx = s.beginTransaction();
 		s.save(p);
+		
+		tx.commit();
 		s.close();
 	}
 
