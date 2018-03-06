@@ -54,10 +54,6 @@ class CreatedPerson{
 @RequestMapping("/register")
 public class RegisterPersonController {
 	
-	public RegisterPersonController() {
-			System.out.println("register start");
-		}
-	
 	@Autowired 
 	RealPersonService pService;
 	

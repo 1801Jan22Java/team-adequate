@@ -1,5 +1,7 @@
 package com.adequate.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,8 +16,9 @@ public class LogoutController {
 
 	@RequestMapping(method=RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView logout(){
+	public ResponseEntity<String> logout(){
+		System.out.println("User logging out...");
 		CurrentUser.logout(); // null-ifies all info on user 
-		return new ModelAndView("redirect:http://localhost:8080/AdequateTravel/login");
+		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED); 
 	}
 }
