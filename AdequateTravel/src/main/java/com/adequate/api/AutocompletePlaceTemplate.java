@@ -40,16 +40,16 @@ class PlaceDetail {
 
 }
 
-public class PlaceTemplate {
+public class AutocompletePlaceTemplate {
 
 	private String status;
 	private PlaceDetail [] predictions;
 
-	public PlaceTemplate() {
+	public AutocompletePlaceTemplate() {
 		super();
 	}
 
-	public PlaceTemplate(String status, PlaceDetail[] predictions) {
+	public AutocompletePlaceTemplate(String status, PlaceDetail[] predictions) {
 		super();
 		this.status = status;
 		this.predictions = predictions;
