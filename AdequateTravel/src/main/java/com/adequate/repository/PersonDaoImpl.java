@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,8 +23,8 @@ public class PersonDaoImpl implements PersonDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Person> getAllPeople() {
-		//Session s = sessionFactory.getCurrentSession(); //TODO::This should work... but it doesnt
-		Session s = HibernateUtil.getSession();
+		Session s = sessionFactory.openSession(); //TODO::This should work... but it doesnt
+		//Session s = HibernateUtil.getSession();
 		List<Person> peopleList = s.createCriteria(Person.class).list();
 		return peopleList;
 	}
@@ -37,8 +38,12 @@ public class PersonDaoImpl implements PersonDao{
 
 	@Override
 	public void addPerson(Person p) {
-		// TODO Auto-generated method stub
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		s.save(p);
 		
+		tx.commit();
+		s.close();
 	}
 
 }
