@@ -12,6 +12,10 @@
 	<!-- enable MVC annotations -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
+	<mvc:cors>
+		<mvc:mapping path="/**" allowed-origins="http://localhost:4200"/>
+	</mvc:cors>
+
 	<!-- set up the View Resolver -->
 	<bean name="ViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
