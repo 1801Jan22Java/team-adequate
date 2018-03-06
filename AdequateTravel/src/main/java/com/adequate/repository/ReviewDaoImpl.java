@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,9 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public void addReview(Review r) {
 		Session s = sessionFactory.openSession();
+		Transaction tx = s.beginTransaction();
 		s.save(r);
+		tx.commit();
 		s.close();
 	}
 
