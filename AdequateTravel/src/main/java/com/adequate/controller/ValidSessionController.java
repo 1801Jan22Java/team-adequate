@@ -18,8 +18,13 @@ public class ValidSessionController {
 	@ResponseBody
 	public ResponseEntity<String> validateSession(){
 		
-		if(CurrentUser.getValidSession())
-			return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
+		try {
+			if(CurrentUser.getValidSession())
+				return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
+		}
+		catch(NullPointerException e) {
+			return new ResponseEntity<>("{\"status\":\"failure\"}", HttpStatus.OK);
+		}
 		
 		return new ResponseEntity<>("{\"status\":\"failure\"}", HttpStatus.OK);
 	}
