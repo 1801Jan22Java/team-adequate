@@ -20,8 +20,8 @@ import com.adequate.service.ReviewService;
 @RequestMapping("/review")
 public class ReviewController {
 	
-	@Autowired
-	private ReviewService realReviewService;
+	//@Autowired
+	//private ReviewService realReviewService;
 	//We also need to pass the place somehow (id?)
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
