@@ -2,7 +2,7 @@ package com.adequate.controller;
 
 import org.springframework.stereotype.Controller;
 
-@Controller
+@Controller("reviewController")
 public class ReviewController {
 
 }
