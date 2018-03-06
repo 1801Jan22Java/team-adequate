@@ -17,6 +17,7 @@ public class ValidSessionController {
 	@RequestMapping(method=RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<String> validateSession(){
+		
 		if(CurrentUser.getValidSession())
 			return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 		
