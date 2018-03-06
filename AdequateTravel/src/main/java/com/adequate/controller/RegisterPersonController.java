@@ -66,7 +66,7 @@ public class RegisterPersonController {
 	public ResponseEntity<String> registerPerson(@RequestBody CreatedPerson createdPerson) {
 		System.out.println("recieved: " + createdPerson.getEmail() + createdPerson.getFname() + createdPerson.getLname() + createdPerson.getPassword());
 		PersonInfo personInfo = new PersonInfo(createdPerson.getFname(), createdPerson.getLname());
-		System.out.println((personInfo.getPersonID()));
+		//System.out.println((personInfo.getPersonID()));
 		pService.addPerson(new Person(createdPerson.getEmail(), createdPerson.getPassword(), personInfo));
 		return new ResponseEntity<>("success", HttpStatus.OK);
 	}

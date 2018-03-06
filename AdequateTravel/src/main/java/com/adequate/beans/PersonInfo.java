@@ -76,8 +76,4 @@ public class PersonInfo implements Serializable{
 		this.about = about;
 	}
 
-	public int getPersonID() {
-		return person.getPersonID();
-	}
-
 }
