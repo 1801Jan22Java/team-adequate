@@ -9,23 +9,5 @@
 		<context:component-scan base-package="com.adequate"></context:component-scan>
 		<!-- enable AOP -->
 		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-    
-    <!-- Manually declaring beans, gonna go the automagic way instead 
-	<bean name="user" class="com.adequate.beans.User" scope="prototype">
-	</bean>
-	
-	<bean name="userInfo" class="com.adequate.beans.UserInfo" scope="prototype">
-	</bean>
-	
-	<bean name="review" class="com.adequate.beans.Review" scope="prototype">
-	</bean>
-	
-	<bean name="itinerary" class="com.adequate.beans.Itinerary" scope="prototype">
-	</bean>
-	
-	<bean name="locationList" class="com.adequate.beans.LocationList" scope="prototype">
-	</bean>
-	
-	-->
 
 </beans>

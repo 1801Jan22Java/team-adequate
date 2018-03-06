@@ -21,9 +21,9 @@ import com.adequate.util.CurrentUser;
 @RequestMapping("/login")
 public class LoginController {
 
-	public LoginController() {
-		System.out.println("start");
-	}
+	//public LoginController() {
+	//	System.out.println("start");
+	//}
 	
 	@Autowired 
 	RealPersonService pService;

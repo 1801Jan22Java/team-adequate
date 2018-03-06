@@ -2,13 +2,16 @@ package com.adequate.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.adequate.beans.Person;
+import com.adequate.util.HibernateUtil;
 
 @Repository("personRepository")
 @Transactional
@@ -36,10 +39,6 @@ public class PersonDaoImpl implements PersonDao{
 
 	@Override
 	public void addPerson(Person p) {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-		
-=======
 		Session s = sessionFactory.openSession();
 		s.save(p);
 		s.close();
@@ -51,7 +50,6 @@ public class PersonDaoImpl implements PersonDao{
 		Person person = (Person) s.get(Person.class, email);
 		s.close();
 		return person.getPersonID();
->>>>>>> ad9ce04... Refactor taking out the PersonInfo object from Java and SQL. Implementation of DAOs
 	}
 
 }
