@@ -54,26 +54,37 @@ export class HttpService {
     const options = new RequestOptions({headers: headers});
     console.log("logout")
     return this.http.get(baseUrl + 'logout',
-    '{}',
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
   }
 
   validateUser(){
 
-    
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     const options = new RequestOptions({headers: headers});
     console.log("logout")
     return this.http.get(baseUrl + 'validate',
-    '{}',
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
     
   }
   
+  submitReview(rating : number, review : string){
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+
+    console.log("Submitting review: " + review + " " + rating);
+
+    return this.http.post(baseUrl + 'review',
+    JSON.stringify({rating: rating, reviewBody: review}),
+    {headers: {'Content-Type': 'application/json'}}
+    );
+  }
+
   getAccountInfo(){
 
   }

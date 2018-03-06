@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { Review } from '../review';
+import { HttpService } from '../Http.service';
 
 @Component({
   selector: 'app-place',
@@ -10,7 +11,7 @@ import { Review } from '../review';
 })
 export class PlaceComponent implements OnInit {
 
-  constructor(private populateService : PopulateService) { }
+  constructor(private populateService : PopulateService, private httpService: HttpService) { }
 
   ngOnInit() {
     this.place = this.populateService.populatePlace();
@@ -31,4 +32,20 @@ export class PlaceComponent implements OnInit {
   listReviews : Review [] = [];
   place : Place;
   ratingString : string = 'Rating ';
+
+
+  rating : number = 3;
+  review : string;
+  reviewRatingString : string = 'Rating: &#x272F; &#x272F; &#x272F;';
+
+  submitReview(){
+    this.httpService.submitReview(this.rating, this.review);
+  }
+
+  changeRatingString() : void {
+    this.reviewRatingString = 'Rating:';
+    for(var i = this.rating; i >= 1; i--) {
+      this.reviewRatingString += ' &#x272F;';
+    }
+  }
 }
