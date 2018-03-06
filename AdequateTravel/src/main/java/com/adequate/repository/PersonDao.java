@@ -13,5 +13,5 @@ public interface PersonDao {
 	
 	public void addPerson(Person p);
 
-	
+	public int getIdByEmail(String email);
 }
