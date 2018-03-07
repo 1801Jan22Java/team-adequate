@@ -3,6 +3,7 @@ package com.adequate.controller;
 import org.springframework.http.HttpStatus; 
 import org.springframework.http.ResponseEntity;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -92,10 +93,10 @@ public class ReviewController {
 				realLocationService.addLocation(new Location(mockReview.getPlaceID()));
 				l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
 				realReviewService.addReview(new Review(l.getLocationId(), CurrentUser.getUserID(), 
-						mockReview.getReview(), LocalDate.now(), mockReview.getRating()));
+						mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating()));
 			} else { // use existing location 
 				realReviewService.addReview(new Review(l.getLocationId(), CurrentUser.getUserID(), 
-						mockReview.getReview(), LocalDate.now(), mockReview.getRating()));
+						mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating()));
 			}
 			
 			
