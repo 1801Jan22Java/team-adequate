@@ -28,7 +28,7 @@ public class Review {
 	
 	@ManyToOne(optional=false)
 	@JoinColumn(name="LOCATION_ID")
-	private LocationList locationList;
+	private Location location;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PERSON_ID")
@@ -48,12 +48,12 @@ public class Review {
 		return reviewID;
 	}
 
-	public LocationList getLocationList() {
-		return locationList;
+	public Location getLocationList() {
+		return location;
 	}
 
-	public void setLocationList(LocationList locationList) {
-		this.locationList = locationList;
+	public void setLocationList(Location location) {
+		this.location = location;
 	}
 
 	public String getReviewBody() {

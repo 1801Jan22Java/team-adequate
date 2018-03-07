@@ -57,6 +57,9 @@ class MockReview {
 	String placeID;
 
 }
+import com.adequate.service.RealLocationService;
+import com.adequate.service.RealPersonService;
+import com.adequate.service.RealReviewService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller("reviewController")
@@ -71,6 +74,17 @@ public class ReviewController {
 
 	// We also need to pass the place somehow (id?)
 	@RequestMapping(method = RequestMethod.POST)
+	
+	@Autowired
+	private RealReviewService rs;
+	
+	@Autowired
+	private RealPersonService ps;
+	
+	@Autowired
+	private RealLocationService ls;
+
+	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> createReview(@RequestBody Review review) {
 
