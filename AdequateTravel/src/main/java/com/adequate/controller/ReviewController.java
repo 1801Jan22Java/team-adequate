@@ -29,7 +29,7 @@ public class ReviewController {
 		
 		//Get user who wrote the review from the session in current user
 		//Be sure to validate session + user is not null
-		
+		//review.getLocationList().
 		System.out.println(review.getRating() + review.getReviewBody());
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
