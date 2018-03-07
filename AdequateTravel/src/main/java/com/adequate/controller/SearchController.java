@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller("searchController")
 @RequestMapping("/search")
 public class SearchController {
-	private final String apiKey = "&key=AIzaSyA-cqeJ3xy8IXWiIffplTwOUqZODVvMBps";
+	private final String  apiKey = "&key=AIzaSyAvaHh8JH7aOABXm2NQzO9OveT5VLNDQXU";
+	private final String secondaryApiKey = "&key=AIzaSyA-cqeJ3xy8IXWiIffplTwOUqZODVvMBps";
+	private final String apiKeyGeocode = "&key=AIzaSyA4k2FBjButfxabh_rgO6DbK7_LSBQN538";
 	
 	// place search has extra parameters we care about
-	private String placeSearchPrefix = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
+	private String placeSearchPrefix = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=";
 	private String placeDetailsPrefix = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
 	// add type=geocode afterwards input
 	private String autocompletePlacePrefix = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=";
+	
+	private String latLongPrefix = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+	
 	
 	@RequestMapping(value="/autoComplete", method=RequestMethod.GET)
 	public ResponseEntity<AutocompletePlaceTemplate> autoComplete(@RequestParam("query") String query){
@@ -46,11 +51,24 @@ public class SearchController {
 		else
 			meterDistance = 49990; // Places api has max radius of 50 000 meters
 		
-		String parameters = query+"&radius="+meterDistance+"&maxPrice="+price;
+		String parameters = convertIdToLatLong(query) +"&radius="+meterDistance+"&maxPrice="+price;
 		
 		String url = placeSearchPrefix + parameters + apiKey;
 		PlaceSearchTemplate placeSearchTemplate = PlaceSearchGetter.getPlaceSearchTemplate(url);
 		return new ResponseEntity<>(placeSearchTemplate,HttpStatus.CREATED);
 	}
+	
+	
+	public String convertIdToLatLong(String query){
+		String url = latLongPrefix + query + apiKeyGeocode;
+		LatLong latLong = LatLongGetter.getLatLongTemplate(url);
+		System.out.println(latLong.getLat() + "," + latLong.getLng());
+		return latLong.getLat() + "," + latLong.getLng();
+	}
+	
+	public String convertReferenceToLink(String reference) {
+		return "";
+	}
+
 	
 }

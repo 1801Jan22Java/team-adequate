@@ -5,6 +5,7 @@ import java.util.Arrays;
 class PlaceSearchResult {
 	private String name;
 	private String place_id;
+	private String rating;
 	private Photo [] photos;
 	private String[] types;
 
@@ -12,12 +13,21 @@ class PlaceSearchResult {
 		super();
 	}
 
-	public PlaceSearchResult(String name, String place_id, Photo [] photos, String[] types) {
+	public PlaceSearchResult(String name, String place_id, Photo [] photos, String rating, String[] types) {
 		super();
 		this.name = name;
 		this.place_id = place_id;
+		this.rating = rating;
 		this.photos = photos;
 		this.types = types;
+	}
+	
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
 
 	public String getName() {
@@ -54,7 +64,7 @@ class PlaceSearchResult {
 
 	@Override
 	public String toString() {
-		return "PlaceSearchResult [name=" + name + ", place_id=" + place_id + ", photos=" + photos + ", types="
+		return "PlaceSearchResult [name=" + name + ", place_id=" + place_id + ", rating=" + rating +", photos=" + photos + ", types="
 				+ Arrays.toString(types) + "]";
 	}
 
