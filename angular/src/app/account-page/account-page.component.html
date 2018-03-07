@@ -15,18 +15,18 @@
         <div>
             <br><br><br><br>
             <label class="title" for="username"> Username </label><br>
-            <input class="title" type="text" id="username" [value]="user.username"/>
+            <input class="title" type="text" id="username" [(ngModel)]="username" [value]="user.username"/>
             <br><br>
         </div>
         <div>
             <label class="title" for="firstname"> First Name </label><br>
-            <input class="title" type="text" id="firstname" [value]="user.firstname"/>
+            <input class="title" type="text" id="firstname" [(ngModel)]="firstname" [value]="user.firstname"/>
             <br><br>
         </div>
 
         <div>
             <label class="title" for="lastname"> Last Name </label><br>
-            <input class="title" type="text" id="lastname" [value]="user.lastname"/>
+            <input class="title" type="text" id="lastname" [(ngModel)]="lastname" [value]="user.lastname"/>
             <br><br>
         </div>
         <br>
@@ -37,7 +37,7 @@
   <div >
         <br>
         <label class="title" for="desc">About You</label>
-        <textarea class="form-control" rows="5" id="desc" [innerHTML]="user.description"></textarea>
+        <textarea class="form-control" rows="5" id="desc" [(ngModel)]="description" [innerHTML]="user.description"></textarea>
   </div>
 
   <br>

@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
               private populateService: PopulateService) { }
 
   ngOnInit() {
-    this.listPlaces = this.populateService.populatePlaces();
   }
 
   populateAutocomplete() : void {

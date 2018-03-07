@@ -3,6 +3,7 @@ import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { Review } from '../review';
 import { HttpService } from '../Http.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-place',
@@ -11,7 +12,7 @@ import { HttpService } from '../Http.service';
 })
 export class PlaceComponent implements OnInit {
 
-  constructor(private populateService : PopulateService, private httpService: HttpService) { }
+  constructor(private populateService : PopulateService, private httpService: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.place = this.populateService.populatePlace();
@@ -25,8 +26,17 @@ export class PlaceComponent implements OnInit {
     }
   }
 
+  placeID : number = -1;
+
   populateListReviews() {
-    this.listReviews = this.populateService.populateReviews();
+    console.log("getting id");
+    this.route.queryParamMap.subscribe(params => {
+      this.placeID = params['id'];
+    })
+
+    console.log(this.placeID);
+
+    //this.listReviews = this.populateService.populateReviews();
   }
 
   listReviews : Review [] = [];
