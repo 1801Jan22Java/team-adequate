@@ -2,6 +2,9 @@ package com.adequate.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.adequate.beans.Location;
 import com.adequate.beans.Review;
-
+import com.adequate.service.LocationService;
+import com.adequate.service.PersonService;
+import com.adequate.service.RealLocationService;
+import com.adequate.service.RealPersonService;
+import com.adequate.service.RealReviewService;
 import com.adequate.service.ReviewService;
 import com.adequate.util.CurrentUser;
 
@@ -57,9 +65,6 @@ class MockReview {
 	String placeID;
 
 }
-import com.adequate.service.RealLocationService;
-import com.adequate.service.RealPersonService;
-import com.adequate.service.RealReviewService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller("reviewController")
@@ -71,30 +76,32 @@ public class ReviewController {
 
 	@Autowired
 	private LocationService realLocationService;
-
-	// We also need to pass the place somehow (id?)
-	@RequestMapping(method = RequestMethod.POST)
 	
 	@Autowired
-	private RealReviewService rs;
-	
-	@Autowired
-	private RealPersonService ps;
-	
-	@Autowired
-	private RealLocationService ls;
+	private PersonService personService;
 
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<String> createReview(@RequestBody Review review) {
+	public ResponseEntity<String> createReview(@RequestBody MockReview mockReview) {
 
-		// Get user who wrote the review from the session in current user
+		// Get user who wrote the mockReview from the session in current user
 		if (CurrentUser.getValidSession()) {
-
+			
+			Location l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
+			// if location doesn't yet exist in database, create new 
+			if(realLocationService.getLocationByPlaceId(mockReview.getPlaceID()) == null) {
+				realLocationService.addLocation(new Location(mockReview.getPlaceID()));
+				l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
+				realReviewService.addReview(new Review(l.getLocationId(), CurrentUser.getUserID(), 
+						mockReview.getReview(), LocalDate.now(), mockReview.getRating()));
+			} else { // use existing location 
+				realReviewService.addReview(new Review(l.getLocationId(), CurrentUser.getUserID(), 
+						mockReview.getReview(), LocalDate.now(), mockReview.getRating()));
+			}
+			
+			
 		}
 		// Be sure to validate session + user is not null
-
-		System.out.println(review.getRating() + review.getReviewBody());
 
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 	}

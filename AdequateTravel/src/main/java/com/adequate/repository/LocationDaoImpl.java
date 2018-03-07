@@ -25,9 +25,15 @@ public class LocationDaoImpl implements LocationDao {
 		Session s = sessionFactory.openSession();
 		Criteria c = s.createCriteria(Location.class)
 				.add(Restrictions.eq("place_id", placeId));
-		Location l = (Location) c.list().get(0);
-		s.close();
-		return l;
+		try {
+			Location l = (Location) c.list().get(0);
+			s.close();
+			return l;
+		} catch (ArrayIndexOutOfBoundsException e) {
+			s.close();
+			return null;
+		}
+		
 	}
 
 	@Override
