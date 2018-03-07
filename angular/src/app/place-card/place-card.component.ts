@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Place } from '../place'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-place-card',
@@ -10,7 +11,7 @@ export class PlaceCardComponent implements OnInit {
 
   @Input() place : Place;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.createRatingString();
@@ -24,4 +25,19 @@ export class PlaceCardComponent implements OnInit {
 
   ratingString : string = 'Rating ';
 
+  onClick(){
+    this.place = new Place();
+    this.place.id = 69;
+    if(this.place == null){
+      //This shouldnt happen
+      //Punish them
+      console.log("Invalid place card!");
+      this.router.navigateByUrl('/login');
+    }
+    else{
+    //Redirect to the place page and submit the id of the place to load reqired information?
+    console.log("Go to a better place!");
+    this.router.navigateByUrl('/place?id=' + this.place.id);
+    }
+  }
 }

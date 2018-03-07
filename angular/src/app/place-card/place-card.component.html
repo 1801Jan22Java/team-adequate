@@ -5,5 +5,5 @@
   <h1 class="title">{{ place.name }}</h1>
   <p class="addFont" [innerHTML]="ratingString"></p>
   <p class="blurb">{{ place.description }}</p>
-  <p><button>View</button></p>
+  <p><button (click)="onClick()">View</button></p>
 </div>

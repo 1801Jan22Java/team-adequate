@@ -13,11 +13,10 @@ export class SearchComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    this.test();
   }
 
   test():void{
-    this.httpService.test().subscribe( data => console.log("retrieved: " + data['high']));
+
   }
 
   toggleAdvanced() : void {

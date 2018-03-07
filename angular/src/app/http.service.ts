@@ -85,11 +85,19 @@ export class HttpService {
     );
   }
 
-  getAccountInfo(){
+  updateAccountInfo(username : string, firstname : string, lastname : string, description : string, userImg : File) : Observable<Object> {
 
-  }
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
-  updateAccountInfo(){
+    const options = new RequestOptions({headers: headers});
 
+    console.log("Submitting account info for: " + username);
+
+    //Change this route
+    return this.http.post(baseUrl + 'account',
+    JSON.stringify({email: username, fname: firstname, lname: lastname, desc: description, img: userImg}),
+    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
+    );
   }
 }
