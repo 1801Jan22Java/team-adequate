@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.adequate.beans.Person;
 import com.adequate.repository.PersonDao;
 
-@Service("personService")
+@Service("realPersonService")
 public class RealPersonService implements PersonService {
 
 	@Autowired
@@ -27,7 +27,16 @@ public class RealPersonService implements PersonService {
 	@Override
 	public void addPerson(Person p) {
 		personRepository.addPerson(p);
-		
+	}
+	
+	@Override
+	public void updatePerson(Person p) {
+		personRepository.updatePerson(p);
+	}
+
+	@Override
+	public Integer getIdByEmail(String email) {
+		return personRepository.getIdByEmail(email);
 	}
 
 }

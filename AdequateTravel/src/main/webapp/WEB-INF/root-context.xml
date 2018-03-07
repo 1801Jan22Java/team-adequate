@@ -12,6 +12,9 @@
 	<!-- Enable Transaction annotations -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
+	<bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+    
 	<!-- Data source -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>

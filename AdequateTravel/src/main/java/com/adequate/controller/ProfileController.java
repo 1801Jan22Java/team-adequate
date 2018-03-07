@@ -1,6 +1,7 @@
 package com.adequate.controller;
 
 import java.sql.Blob;
+import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,23 +62,40 @@ class UpdatePerson{
 @RequestMapping("/account")
 public class ProfileController {
 
-	
 	@Autowired 
 	private RealPersonService personService;
 	
-	//@Autowired 
-	//private RealPersonInfoService personInfoService;
-	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<Person> getProfile(){
-		return new ResponseEntity<>(personService.getPersonById(CurrentUser.getUserID()), HttpStatus.OK);
+	public ResponseEntity<String> getProfile(){
+		System.out.println("User Get");
+		System.out.println("id: " + CurrentUser.getUserID());
+		Person user = personService.getPersonById(CurrentUser.getUserID());
+		System.out.println(user.getEmail());
+		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> updateProfile(@RequestBody UpdatePerson person){
+				
+		// use the email from RequestBody to get the desired person object from DB
+		Person comparePerson = personService.getPersonById(personService.getIdByEmail(person.getEmail()));
 		
-		System.out.println("Recieved Updated Person: " );
-		//+ person.getEmail() + person.getImg().toString());
+		if(comparePerson == null) {
+			return new ResponseEntity<>("{\"status\":\"does_not_exist\"}", HttpStatus.OK);
+		} else {
+			comparePerson.setFirstname(person.getFname());
+			comparePerson.setLastname(person.getLname());
+			comparePerson.setAbout(person.getDesc());
+			try {
+				byte [] image = person.getImg().getBytes(1l, (int) person.getImg().length());
+				comparePerson.setImage(image);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//comparePerson.setImage(person.getImg());
+			// gonna figure out how to convert blob to byte[]
+		}
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 	}

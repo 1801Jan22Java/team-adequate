@@ -1,5 +1,6 @@
 package com.adequate.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -10,6 +11,22 @@ import org.springframework.stereotype.Component;
 @Table(name="LOCATION")
 @Component(value="location")
 public class Location {
+	
+	public Location(String placeId) {
+		super();
+		this.placeId = placeId;
+		this.itineraries = new ArrayList<Itinerary>();
+		this.locationLists = new ArrayList<LocationList>();
+		this.reviews = new ArrayList<Review>();
+	}
+
+	public Location() {
+		super();
+		this.placeId = "";
+		this.itineraries = new ArrayList<Itinerary>();
+		this.locationLists = new ArrayList<LocationList>();
+		this.reviews = new ArrayList<Review>();
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="locationIdSequence")

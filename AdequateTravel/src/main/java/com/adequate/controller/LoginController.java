@@ -34,9 +34,10 @@ public class LoginController {
 				if(p.getEmail().equals(person.getEmail())) {
 					if(p.getPassword().equals(person.getPassword()))
 					{
-						CurrentUser.login(person.getPersonID(), person.getEmail(), person.getPassword());
+						
+						CurrentUser.login(p.getPersonID(), p.getEmail(), p.getPassword());
 					
-						System.out.println("Logged in!");
+						System.out.println("Logged in! " + p.getPersonID());
 						return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 					}
 				}
