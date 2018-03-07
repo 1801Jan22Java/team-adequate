@@ -76,10 +76,7 @@ public class ProfileController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> updateProfile(@RequestBody UpdatePerson person){
-		
-		//System.out.println("Recieved Updated Person: " + person.getEmail() + person.getFname() + person.getLname() + person.getDesc());
-		//+ person.getEmail() + person.getImg().toString());
-		
+				
 		// use the email from RequestBody to get the desired person object from DB
 		Person comparePerson = personService.getPersonById(personService.getIdByEmail(person.getEmail()));
 		
