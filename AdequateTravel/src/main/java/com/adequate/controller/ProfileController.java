@@ -17,7 +17,7 @@ import com.adequate.service.RealPersonService;
 import com.adequate.util.CurrentUser;
 
 class UpdatePerson{
-	
+	// Object received from Client, representing info client has access to
 	private String email;
 	private String fname;
 	private String lname;
@@ -62,9 +62,11 @@ class UpdatePerson{
 @RequestMapping("/account")
 public class ProfileController {
 
+	// go-between for people in the database and Controller
 	@Autowired 
 	private RealPersonService personService;
 	
+	//response to all HTTP GETs, create a 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<String> getProfile(){
 		System.out.println("User Get");
@@ -93,8 +95,6 @@ public class ProfileController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			//comparePerson.setImage(person.getImg());
-			// gonna figure out how to convert blob to byte[]
 		}
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);

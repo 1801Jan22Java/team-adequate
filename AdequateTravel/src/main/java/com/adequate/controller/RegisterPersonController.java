@@ -53,6 +53,7 @@ public class RegisterPersonController {
 	@Autowired 
 	RealPersonService pService;
 	
+	//Getting info from a POST request and sending it to the database 
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> registerPerson (@RequestBody CreatedPerson person){
