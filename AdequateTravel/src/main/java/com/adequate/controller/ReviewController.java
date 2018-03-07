@@ -71,13 +71,13 @@ class MockReview {
 @RequestMapping("/review")
 public class ReviewController {
 
-	//@Autowired
+	@Autowired
 	private ReviewService realReviewService;
 
-	//@Autowired
+	@Autowired
 	private LocationService realLocationService;
 	
-	//@Autowired
+	@Autowired
 	private PersonService realPersonService;
 
 	@RequestMapping(method=RequestMethod.POST)
