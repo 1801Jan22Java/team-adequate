@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { Review } from '../review';
-import { HttpService } from '../Http.service';
+import { HttpService } from '../http.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,6 +15,7 @@ export class PlaceComponent implements OnInit {
   constructor(private populateService : PopulateService, private httpService: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
     this.place = this.populateService.populatePlace();
     this.populateListReviews();
     this.createRatingString();

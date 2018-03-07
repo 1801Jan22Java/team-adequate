@@ -2,39 +2,44 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Place } from './place';
 import { Review } from './review';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class PopulateService {
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
-  populatePlace() {
+  populatePlace() : Place {
     var place : Place = {
-      id : 0,
-      rating : 3,
-      name : "temp place name",
+      id : "",
+      rating :  0,
       description :'There\'s not a thing in the world wrong with washing your brush. Anything you want to do you can do here. Just relax and let it flow. That easy. You have to allow the paint to break to make it beautiful. How do you make a round circle with a square knife? That\'s your challenge for the day. And just raise cain.',
+      placeTypes : [],
       placePictures : ["http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"],
+
     };
     return place;
   }
 
-  populatePlaces() {
+  populatePlaces(listResults : Object []) : Place [] {
+    console.log(listResults);
     var placeList : Place [] = [];
-    for(var i = 0; i < 5; i ++ ) {
+    for(let result in listResults) {
       var place : Place = {
-        id : 0,
-        rating : 0,
-        name : "temp place name",
-        description : 'There\'s not a thing in the world wrong with washing your brush. Anything you want to do you can do here. Just relax and let it flow. That easy. You have to allow the paint to break to make it beautiful. How do you make a round circle with a square knife? That\'s your challenge for the day. And just raise cain.',
-        placePictures : ["http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"],
+        id : listResults[result]['place_id'],
+        rating :  0,
+        description : listResults[result]['name'],
+        placeTypes :  listResults[result]['types'],
+        placePictures :  listResults[result]['photos'],
+
       };
+      console.log(place);
       placeList.push(place);
     }
     return placeList;
 
   }
-  populateReview() {
+  populateReview() : Review {
     var review : Review = {
       id : 1,
       rating : 2,
@@ -47,7 +52,7 @@ export class PopulateService {
     return review;
 
   }
-  populateReviews() {
+  populateReviews() : Review [] {
     var reviewList : Review [] = [];
     for(var i = 0; i < 6; i ++ ) {
       var review : Review = {

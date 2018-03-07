@@ -17,8 +17,8 @@
             <button type="submit" (click)="populateSearchResults()" class="btn btn-default">Search</button>
             <div *ngIf="!searchPeople">
               <datalist *ngIf="showAutocomplete" class="autocomplete" id="searchText">
-                <div *ngFor="let place of listPlaces">
-                  <option class="addFont" value={{place}} ></option>
+                <div *ngFor="let place of listPlaces; let adfas of listPlaces[place]">
+                  <option class="addFont" value={{place.description}} ></option>
                 </div>
               </datalist>
             </div>
@@ -42,6 +42,20 @@
       <div *ngIf="!searchPeople" class="slidecontainer">
 
         <div class="row">
+          <div>
+            <span class="addFont">Categories</span>
+            <br />
+            <br />
+            <div class="mat-button-toggle-group" role="group" (click)="setSearchCategory()" aria-label="Basic example" >
+              <button type="button" class="btn btn-secondary" value="Hotel" [(ngModel)]="searchCategory">Hotel</button>
+              <button type="button" class="btn btn-secondary">Food</button>
+              <button type="button" class="btn btn-secondary">Bars</button>
+              <button type="button" class="btn btn-secondary">Night Club</button>
+              <button type="button" class="btn btn-secondary">Shopping</button>
+              <button type="button" class="btn btn-secondary">Museum</button>
+            </div>
+          </div>
+          <br />
           <div >
             <span class="addFont"> Distance: {{ searchDistance }} miles </span>
             <br />
@@ -60,18 +74,14 @@
 
           </div>
           <br />
-          <!-- <div>
-            <span class="addFont" [innerHtml]="searchRatingString"></span>
-            <br />
-            <br />
-            <input [(ngModel)]="searchRating"
-            (change) = "changeRatingString()"
-            type="range" min="1" max="5" value="1" class="slider" id="ratingSlider" name="searchRatingSlider">
-
-          </div> -->
         </div>
       </div>
 
+    </div>
+    <div *ngFor="let inputPlace of listResultPlaces" >
+      <div class="col-sm-4">
+        <app-place-card [place]="inputPlace"></app-place-card>
+      </div>
     </div>
 
 </div>

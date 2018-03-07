@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../Http.service';
+import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       console.log('you lose');
     }
   }
-  
+
   );
   }
 }

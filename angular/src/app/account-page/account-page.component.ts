@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user'
 import { Place } from '../place';
-import { HttpService } from '../Http.service';
+import { HttpService } from '../http.service';
 import { PopulateService } from '../populate.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class AccountPageComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.populateService.populateAccount();
-    this.listPlaces = this.populateService.populatePlaces();
+    // this.listPlaces = this.populateService.populatePlaces();
 
     //Set the bound variables to loaded in user
   }
@@ -46,7 +46,7 @@ export class AccountPageComponent implements OnInit {
     //console.log(this.userImg);
    // let reader = new FileReader();
    // reader.readAsText();
-    this.httpService.updateAccountInfo(this.username, this.firstname, this.lastname, this.description, file).subscribe( 
+    this.httpService.updateAccountInfo(this.username, this.firstname, this.lastname, this.description, file).subscribe(
       data => console.log("todo")
     );
   }

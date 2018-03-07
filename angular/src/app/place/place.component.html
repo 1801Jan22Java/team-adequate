@@ -42,7 +42,7 @@
     <div class="title">
       <h1>{{ place.name }}</h1>
     </div>
-    <p><button data-toggle="modal" data-target="#writeReview"> Write Review </button></p>
+
     <br />
     <div class="title">
       <h4 [innerHTML]="ratingString"></h4>
@@ -59,16 +59,10 @@
         <app-review-card [review]="inputReview"></app-review-card>
       </div>
     </div>
-
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary">Walk</button>
-      <button type="button" class="btn btn-secondary">Drive</button>
-      <button type="button" class="btn btn-secondary">Fly</button>
-    </div>
     <br />
     <br />
     <div>
-      <img src="" alt="Google Maps goes here"/>
+      <p><button data-toggle="modal" data-target="#writeReview"> Write Review </button></p>
     </div>
 
     <div id="placeModal" class="modal fade" role="dialog">
@@ -115,7 +109,7 @@
             type="range" min="1" max="5" value="1" class="slider" id="ratingSlider" name="searchRatingSlider">
             <span class="addFont" [innerHtml]="reviewRatingString"></span> <br><br>
           </div>
-            <p id="reviewModalreview">review</p> 
+            <p id="reviewModalreview">review</p>
             <textarea class="form-control" [(ngModel)]="review" rows="5" id="desc" placeholder="Write a review"></textarea>
           </div>
           <div class="modal-footer">

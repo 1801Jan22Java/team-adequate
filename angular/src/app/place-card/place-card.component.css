@@ -1,20 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 250px;
     margin: 15px;
     text-align: center;
 }
+img {
+  max-width : 250px;
+  height: 150px;
+}
 
 .title {
+    font-family: "Roboto", sans-serif;
     color: grey;
     font-size: 18px;
 }
 
 .blurb {
+  font-family: "Roboto", sans-serif;
   height: 40px;
-  width: 100%;
+  width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
+
 }
 
 button {
