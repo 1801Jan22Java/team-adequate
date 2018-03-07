@@ -48,6 +48,20 @@
   padding: 10px;
 }
 
+.autocomplete {
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  outline: 0;
+  background: #f2f2f2;
+  width: 75%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+}
+
 .advancedToggle {
     background-color: #ffffff;
     text-align: right;

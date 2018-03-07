@@ -7,7 +7,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 
 
 //const baseUrl : string = 'http://ec2-18-218-126-211.us-east-2.compute.amazonaws.com:8080/AdequateTravel/';
-const baseUrl : string = 'http://localhost:8080/AdequateTravel/';
+const baseUrl : string = 'http://localhost:8084/AdequateTravel/';
 //http://localhost:8080/AdequateTravel/login
 
 @Injectable()
@@ -15,8 +15,25 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  test(): Observable<Object> {
-    return this.http.get("https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Paris&types=geocode&&key=AIzaSyA-cqeJ3xy8IXWiIffplTwOUqZODVvMBps");
+  searchPlaces(description : string,distance : number, price : number ) : Observable<Object> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(baseUrl + 'search/placeSearch?query=' + description + "&distance=" + distance + "&price=" + price,
+  {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
+  }
+
+  autocomplete(query : string) : Observable<Object> {
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(baseUrl + 'search/autoComplete?query=' + query,
+  {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
   }
 
   login(username: string, password: string) : Observable<Object> {
@@ -30,7 +47,7 @@ export class HttpService {
 
     return this.http.post(baseUrl + 'login',
     JSON.stringify({email: username, password: password}),
-    {headers: {'Content-Type': 'application/json'}}
+    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
   }
 
@@ -68,9 +85,9 @@ export class HttpService {
     return this.http.get(baseUrl + 'validate',
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
-    
+
   }
-  
+
   submitReview(rating : number, review : string){
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

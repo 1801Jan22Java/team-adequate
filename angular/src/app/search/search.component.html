@@ -9,17 +9,24 @@
 <br />
 <!-- Search form -->
 <div class="form container">
-  <form class="form-inline" action="search">
+  <form class="form-inline">
 
       <div class="login-form">
+            <input [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" list="searchText" placeholder="Find an adequate trip!"  (keyup)="loadAutocomplete()"/>
+            <button type="submit" (click)="populateSearchResults()" class="btn btn-default">Search</button>
+            <div *ngIf="!searchPeople">
+              <datalist *ngIf="showAutocomplete" class="autocomplete" id="searchText">
+                <div *ngFor="let place of listPlaces">
+                  <option class="addFont" value={{place}} ></option>
+                </div>
+              </datalist>
+            </div>
 
-            <input type="text" placeholder="Find an adequate trip!"/>
-            <button type="submit" class="btn btn-default">Search</button>
       </div>
-        <p *ngIf="searchPeople" data-toggle="collapse" class="advancedToggle" data-target="#advanced" (click)="toggleAdvanced()" [innerHTML]="advancedString"></p>
+        <p *ngIf="!searchPeople" data-toggle="collapse" class="advancedToggle" data-target="#advanced" (click)="toggleAdvanced()" [innerHTML]="advancedString"></p>
 
   </form>
-  <br *ngIf="!searchPeople" />
+  <br *ngIf="searchPeople" />
   <div>
     <div class="row align-items-center">
       <input type="checkbox" (click)="togglePeople()" /><span class="addFont">  Search People</span>
@@ -31,7 +38,7 @@
   <!-- Advanced searc options dropdown -->
   <div  id="advanced" class="collapse">
 
-      <div *ngIf="searchPeople" class="slidecontainer">
+      <div *ngIf="!searchPeople" class="slidecontainer">
 
         <div class="row">
           <div >
@@ -39,7 +46,7 @@
             <br />
             <br />
             <input [(ngModel)]="searchDistance"
-            type="range" min="1" max="50" value="10" class="slider" id="distanceSlider" name="searchDistanceSlider">
+            type="range" min="1" max="30" value="10" class="slider" id="distanceSlider" name="searchDistanceSlider">
           </div>
           <br />
           <div>
@@ -52,7 +59,7 @@
 
           </div>
           <br />
-          <div>
+          <!-- <div>
             <span class="addFont" [innerHtml]="searchRatingString"></span>
             <br />
             <br />
@@ -60,7 +67,7 @@
             (change) = "changeRatingString()"
             type="range" min="1" max="5" value="1" class="slider" id="ratingSlider" name="searchRatingSlider">
 
-          </div>
+          </div> -->
         </div>
       </div>
 
