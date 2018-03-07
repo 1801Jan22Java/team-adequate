@@ -1,6 +1,6 @@
 package com.adequate.beans;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component(value="review")
 public class Review {
 
-	public Review(int locationID, int userID, String reviewBody, Date timeOfReview, int rating) {
+	public Review(int locationID, int userID, String reviewBody, LocalDate timeOfReview, int rating) {
 		super();
 		this.reviewBody = reviewBody;
 		this.timeOfReview = timeOfReview;
@@ -39,7 +39,7 @@ public class Review {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "REVIEW_DATE")
-	private Date timeOfReview;
+	private LocalDate timeOfReview;
 	
 	@Column(name = "RATING")
 	private int rating; // number of stars, 0-4.
@@ -64,11 +64,11 @@ public class Review {
 		this.reviewBody = reviewBody;
 	}
 
-	public Date getTimeOfReview() {
+	public LocalDate getTimeOfReview() {
 		return timeOfReview;
 	}
 
-	public void setTimeOfReview(Date timeOfReview) {
+	public void setTimeOfReview(LocalDate timeOfReview) {
 		this.timeOfReview = timeOfReview;
 	}
 

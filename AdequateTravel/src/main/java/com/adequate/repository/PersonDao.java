@@ -12,6 +12,8 @@ public interface PersonDao {
 	public Person getPersonById(int id);
 	
 	public void addPerson(Person p);
+	
+	public void updatePerson(Person p);
 
 	public int getIdByEmail(String email);
 }
