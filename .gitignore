@@ -130,3 +130,4 @@ AdequateTravel/target/m2e-wtp/web-resources/META-INF/maven/com.adequate/Adequate
 *.properties
 AdequateTravel/target/m2e-wtp/web-resources/META-INF/maven/com.adequate/AdequateTravel/pom.properties
 AdequateTravel/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+*.MF

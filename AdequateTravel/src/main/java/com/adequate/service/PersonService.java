@@ -10,6 +10,8 @@ public interface PersonService {
 
 	public Person getPersonById(int id);
 
+	public Integer getIdByEmail(String email);
+	
 	public void addPerson(Person p);
 
 }

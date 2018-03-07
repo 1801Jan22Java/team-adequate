@@ -1,9 +1,10 @@
 package com.adequate.controller;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus; 
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,15 +12,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adequate.beans.Location;
 import com.adequate.beans.Review;
 import com.adequate.service.LocationService;
 import com.adequate.service.PersonService;
-import com.adequate.service.RealLocationService;
-import com.adequate.service.RealPersonService;
-import com.adequate.service.RealReviewService;
 import com.adequate.service.ReviewService;
 import com.adequate.util.CurrentUser;
 
@@ -78,7 +77,7 @@ public class ReviewController {
 	private LocationService realLocationService;
 	
 	@Autowired
-	private PersonService personService;
+	private PersonService realPersonService;
 
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
@@ -100,13 +99,29 @@ public class ReviewController {
 			}
 			
 			
+		} else {
+			return new ResponseEntity<>("{\"status\":\"invalid\"}", HttpStatus.OK);
 		}
-		// Be sure to validate session + user is not null
 
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 	}
 	/*
 	 * Object received for review created: { rating: number, review: string }
 	 */
+	
+	@RequestMapping(value="/byPlace", method=RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Review>> getReviewsByPlace(@RequestParam("placeID") String placeID){
+		List<Review> placeReviews = realReviewService.getReviewsByPlace(placeID);
+		return new ResponseEntity<List<Review>>(placeReviews, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/byPerson", method=RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Review>> getReviewsByPerson(@RequestParam("email") String email){
+		Integer personID = realPersonService.getIdByEmail(email);
+		List<Review> personReviews = realReviewService.getReviewsByPerson(personID);
+		return new ResponseEntity<List<Review>>(personReviews, HttpStatus.OK);
+	}
 
 }

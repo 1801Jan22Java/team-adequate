@@ -30,4 +30,9 @@ public class RealPersonService implements PersonService {
 		
 	}
 
+	@Override
+	public Integer getIdByEmail(String email) {
+		return personRepository.getIdByEmail(email);
+	}
+
 }
