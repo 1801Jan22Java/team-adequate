@@ -96,7 +96,7 @@ export class HttpService {
 
     //Change this route
     return this.http.post(baseUrl + 'account',
-    JSON.stringify({email: username, fname: firstname, lname: lastname, desc: description, img: userImg}),
+    JSON.stringify({email: username, fname: firstname, lname: lastname, desc: description/*, img: userImg*/}),
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
   }
