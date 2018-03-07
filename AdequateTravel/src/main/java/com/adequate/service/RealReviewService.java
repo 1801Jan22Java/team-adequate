@@ -3,10 +3,12 @@ package com.adequate.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adequate.beans.Review;
 import com.adequate.repository.ReviewDao;
 
+@Service("realReviewService")
 public class RealReviewService implements ReviewService {
 
 	@Autowired

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.adequate.beans.Person;
 import com.adequate.repository.PersonDao;
 
-@Service("personService")
+@Service("realPersonService")
 public class RealPersonService implements PersonService {
 
 	@Autowired

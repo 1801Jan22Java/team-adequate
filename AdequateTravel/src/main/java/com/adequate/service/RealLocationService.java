@@ -1,10 +1,12 @@
 package com.adequate.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adequate.beans.Location;
 import com.adequate.repository.LocationDao;
 
+@Service("realLocationService")
 public class RealLocationService implements LocationService {
 
 	@Autowired
