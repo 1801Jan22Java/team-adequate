@@ -19,7 +19,6 @@ public class SearchController {
 	// place search has extra parameters we care about
 	private String placeSearchPrefix = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
 	private String placeDetailsPrefix = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
-	// add type=geocode afterwards input
 	private String autocompletePlacePrefix = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=";
 	
 	@RequestMapping(value="/autoComplete", method=RequestMethod.GET)
