@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -59,7 +61,9 @@ public class PersonDaoImpl implements PersonDao{
 	@Override
 	public int getIdByEmail(String email) {
 		Session s = sessionFactory.openSession();
-		Person person = (Person) s.get(Person.class, email);
+		Criteria c = s.createCriteria(Person.class)
+				.add(Restrictions.eq("email", email));
+		Person person = (Person) c.uniqueResult();
 		s.close();
 		return person.getPersonID();
 	}
