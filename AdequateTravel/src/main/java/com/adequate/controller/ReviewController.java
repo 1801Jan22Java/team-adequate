@@ -11,18 +11,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adequate.beans.Review;
-
-
-import com.adequate.service.ReviewService;
+import com.adequate.service.RealLocationService;
+import com.adequate.service.RealPersonService;
+import com.adequate.service.RealReviewService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller("reviewController")
 @RequestMapping("/review")
 public class ReviewController {
 	
-	//@Autowired
-	//private ReviewService realReviewService;
-	//We also need to pass the place somehow (id?)
+	@Autowired
+	private RealReviewService rs;
+	
+	@Autowired
+	private RealPersonService ps;
+	
+	@Autowired
+	private RealLocationService ls;
+
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> createReview(@RequestBody Review review){
@@ -31,6 +37,8 @@ public class ReviewController {
 		//Be sure to validate session + user is not null
 		
 		System.out.println(review.getRating() + review.getReviewBody());
+		
+		
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 	}
