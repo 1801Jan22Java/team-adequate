@@ -1,5 +1,6 @@
 package com.adequate.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -11,6 +12,14 @@ import org.springframework.stereotype.Component;
 @Component(value="location")
 public class Location {
 	
+	public Location(String placeId) {
+		super();
+		this.placeId = placeId;
+		this.itineraries = new ArrayList<Itinerary>();
+		this.locationLists = new ArrayList<LocationList>();
+		this.reviews = new ArrayList<Review>();
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="locationIdSequence")
 	@SequenceGenerator(allocationSize=1, name="locationIdSequence", sequenceName="SQ_LIST_ID")
