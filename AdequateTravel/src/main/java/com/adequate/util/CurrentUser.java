@@ -33,7 +33,6 @@ public class CurrentUser {
 		return password;
 	}
 
-
 	public static Boolean getValidSession() {
 		return validSession;
 	}

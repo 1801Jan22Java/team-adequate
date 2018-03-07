@@ -68,24 +68,33 @@ public class ProfileController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<String> getProfile(){
 		System.out.println("User Get");
-		System.out.println("id: " + CurrentUser.getUserID());
+		
 		Person user = personService.getPersonById(CurrentUser.getUserID());
-		System.out.println(user.getEmail());
-		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
+		
+		if(user != null) {
+			return new ResponseEntity<>("{ \"status\": \"success\",\"fname\": \" "+ user.getFirstname() + "\", "
+					+ "\"lname\": \" " + user.getLastname() + "\", \"email\": \" "+ user.getEmail() + "\","
+					 + " \"description\": \" "+ user.getAbout() + "\", \"id\": \" "+ user.getPersonID() + "\"  }", HttpStatus.ACCEPTED);
+		}
+		else {
+			return new ResponseEntity<>("{ \"status\": \"fail\"  }", HttpStatus.OK);
+		}
+		
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> updateProfile(@RequestBody UpdatePerson person){
-				
+		System.out.println("test1: " + person.getEmail());	
 		// use the email from RequestBody to get the desired person object from DB
 		Person comparePerson = personService.getPersonById(personService.getIdByEmail(person.getEmail()));
-		
+		System.out.println("test2");
 		if(comparePerson == null) {
 			return new ResponseEntity<>("{\"status\":\"does_not_exist\"}", HttpStatus.OK);
 		} else {
 			comparePerson.setFirstname(person.getFname());
 			comparePerson.setLastname(person.getLname());
 			comparePerson.setAbout(person.getDesc());
+			/*
 			try {
 				byte [] image = person.getImg().getBytes(1l, (int) person.getImg().length());
 				comparePerson.setImage(image);
@@ -93,6 +102,7 @@ public class ProfileController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			*/
 			//comparePerson.setImage(person.getImg());
 			// gonna figure out how to convert blob to byte[]
 		}
