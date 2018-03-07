@@ -1,6 +1,7 @@
 package com.adequate.controller;
 
 import java.sql.Blob;
+import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,12 +62,8 @@ class UpdatePerson{
 @RequestMapping("/account")
 public class ProfileController {
 
-	
 	@Autowired 
 	private RealPersonService personService;
-	
-	//@Autowired 
-	//private RealPersonInfoService personInfoService;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Person> getProfile(){
@@ -76,8 +73,28 @@ public class ProfileController {
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> updateProfile(@RequestBody UpdatePerson person){
 		
-		System.out.println("Recieved Updated Person: " + person.getEmail() + person.getFname() + person.getLname() + person.getDesc());
+		//System.out.println("Recieved Updated Person: " + person.getEmail() + person.getFname() + person.getLname() + person.getDesc());
 		//+ person.getEmail() + person.getImg().toString());
+		
+		// use the email from RequestBody to get the desired person object from DB
+		Person comparePerson = personService.getPersonById(personService.getIdByEmail(person.getEmail()));
+		
+		if(comparePerson == null) {
+			return new ResponseEntity<>("{\"status\":\"does_not_exist\"}", HttpStatus.OK);
+		} else {
+			comparePerson.setFirstname(person.getFname());
+			comparePerson.setLastname(person.getLname());
+			comparePerson.setAbout(person.getDesc());
+			try {
+				byte [] image = person.getImg().getBytes(1l, (int) person.getImg().length());
+				comparePerson.setImage(image);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//comparePerson.setImage(person.getImg());
+			// gonna figure out how to convert blob to byte[]
+		}
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 	}
