@@ -76,7 +76,7 @@ public class ProfileController {
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> updateProfile(@RequestBody UpdatePerson person){
 		
-		System.out.println("Recieved Updated Person: " );
+		System.out.println("Recieved Updated Person: " + person.getEmail() + person.getFname() + person.getLname() + person.getDesc());
 		//+ person.getEmail() + person.getImg().toString());
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
