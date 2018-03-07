@@ -69,8 +69,12 @@ public class ProfileController {
 	//private RealPersonInfoService personInfoService;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<Person> getProfile(){
-		return new ResponseEntity<>(personService.getPersonById(CurrentUser.getUserID()), HttpStatus.OK);
+	public ResponseEntity<String> getProfile(){
+		System.out.println("User Get");
+		System.out.println("id: " + CurrentUser.getUserID());
+		Person user = personService.getPersonById(CurrentUser.getUserID());
+		System.out.println(user.getEmail());
+		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)

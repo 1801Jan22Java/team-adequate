@@ -20,14 +20,14 @@ import com.adequate.service.RealReviewService;
 @RequestMapping("/review")
 public class ReviewController {
 	
-	@Autowired
-	private RealReviewService rs;
+	//@Autowired
+	//private RealReviewService rs;
 	
-	@Autowired
-	private RealPersonService ps;
+	//@Autowired
+	//private RealPersonService ps;
 	
-	@Autowired
-	private RealLocationService ls;
+	//@Autowired
+	//private RealLocationService ls;
 
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
