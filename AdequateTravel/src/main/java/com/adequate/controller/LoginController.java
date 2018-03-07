@@ -27,7 +27,7 @@ public class LoginController {
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> login(@RequestBody Person person) {
-		
+
 		List<Person> people = pService.getAllPeople();
 		if(people != null) {
 			for(Person p : people) {
@@ -43,7 +43,7 @@ public class LoginController {
 				}
 			}
 		}
-		return new ResponseEntity<>("failed to login", HttpStatus.FAILED_DEPENDENCY);
+		return new ResponseEntity<>("{\"status\":\"failed\"}", HttpStatus.FAILED_DEPENDENCY);
 		
 	}
 	
