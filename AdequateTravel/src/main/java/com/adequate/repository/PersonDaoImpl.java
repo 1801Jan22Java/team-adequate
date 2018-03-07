@@ -45,6 +45,16 @@ public class PersonDaoImpl implements PersonDao{
 		tx.commit();
 		s.close();
 	}
+	
+	@Override
+	public void updatePerson(Person p) {
+		Session s = sessionFactory.openSession();
+		Transaction tx = s.beginTransaction();
+		s.merge(p);
+		
+		tx.commit();
+		s.close();
+	}
 
 	@Override
 	public int getIdByEmail(String email) {
