@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
-Built-By: Josh
+<<<<<<< HEAD
+Built-By: Michael Chen
+Build-Jdk: 1.8.0_162
+=======
+Built-By: batem
 Build-Jdk: 1.8.0_161
+>>>>>>> 0083a37bad9281f73be5a8323147dece9c74da2c
 Created-By: Maven Integration for Eclipse
 
