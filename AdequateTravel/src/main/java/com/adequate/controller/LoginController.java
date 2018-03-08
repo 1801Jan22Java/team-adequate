@@ -43,7 +43,7 @@ public class LoginController {
 				}
 			}
 		}
-		return new ResponseEntity<>("{\"status\":\"failed\"}", HttpStatus.FAILED_DEPENDENCY);
+		return new ResponseEntity<>("{\"status\":\"failed\"}", HttpStatus.ACCEPTED);
 		
 	}
 	
