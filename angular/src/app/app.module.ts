@@ -17,7 +17,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReviewCardComponent } from './review-card/review-card.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { HttpService } from './http.service';
+import { HttpService } from './Http.service';
 import { PlaceCardComponent } from './place-card/place-card.component';
 import { PopulateService } from './populate.service';
 

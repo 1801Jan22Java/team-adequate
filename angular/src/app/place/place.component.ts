@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { Review } from '../review';
-import { HttpService } from '../http.service';
+import { HttpService } from '../Http.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -35,13 +35,16 @@ export class PlaceComponent implements OnInit {
   }
 
   convertImage() {
-    for(var i = 0; i < this.place.placePictures.length; i ++ ) {
-      // console.log(photo);
-      if (i < 4) {
-        this.place.placePictures[i] = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&maxheight=1000&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
-      } else {
-        delete this.place.placePictures[i];
+    if (this.place.placePictures != null) {
+      for(var i = 0; i < this.place.placePictures.length; i ++ ) {
+        if (i < 4) {
+          this.place.placePictures[i] = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&maxheight=1000&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
+        } else {
+          delete this.place.placePictures[i];
+        }
       }
+    } else {
+      this.place.placePictures = ["http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg","http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg","http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"];
     }
   }
 

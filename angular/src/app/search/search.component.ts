@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { HttpService } from '../Http.service';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { User } from '../user';
@@ -16,10 +16,17 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
   }
+  onclickHotel() {this.searchCategory="hotel";}
+  onclickNightClub() {this.searchCategory="night_club";}
+  onclickShopping() {this.searchCategory="shopping";}
+  onclickMuseum() {this.searchCategory="museum";}
+  onclickBars() {this.searchCategory="bars";}
+  onclickFood(){this.searchCategory="food";}
 
   populateAutocompleteHelper(data : Object) : void {
     for(let entry in data) {
       console.log(data[entry]['description']);
+      console.log("greetings");
       console.log(data[entry]['rating']);
       var place : Place = {
         id : data[entry]['place_id'],
@@ -39,13 +46,29 @@ export class SearchComponent implements OnInit {
     console.log(this.listPlaces);
   }
 
-  populateSearchResultsHelper() : void {
+  populateSearchResultsHelper(listResults : Object []) : Place [] {
+    console.log(listResults);
+    var placeList : Place [] = [];
+    for(let result in listResults) {
+      var place : Place = {
+        id : listResults[result]['place_id'],
+        rating :  listResults[result]['rating'],
+        description : listResults[result]['name'],
+        placeTypes :  listResults[result]['types'],
+        placePictures :  listResults[result]['photos'],
 
+      };
+      console.log(place);
+      placeList.push(place);
+    }
+    return placeList;
   }
 
   populateSearchResults() : void {
     console.log(this.listPlaces[0]['description']);
-    this.httpService.searchPlaces(this.listPlaces[0]['description'].replace(' ','+'),this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateService.populatePlaces(data['results']));
+    this.listResultPlaces = [];
+    this.httpService.searchPlaces(this.listPlaces[0]['description'].replace(' ','+'),this.searchCategory,this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateSearchResultsHelper(data['results']));
+    console.log(this.listResultPlaces);
   }
 
   loadAutocomplete() : void {
@@ -96,7 +119,6 @@ export class SearchComponent implements OnInit {
   advancedToggle : boolean = true;
   advancedString : string = "► Advanced";
   searchPriceString : string = '$';
-  // searchRatingString :string =  'Rating: &#x272F;';
   listUsers : User [] = [];
   listPlaces : Place [] = [];
   listResultPlaces : Place [] = [];

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Place } from './place';
 import { Review } from './review';
-import { HttpService } from './http.service';
+import { HttpService } from './Http.service';
 
 @Injectable()
 export class PopulateService {
@@ -99,7 +99,7 @@ export class PopulateService {
       return user;
     }
     );
-    
+
     // var  user : User = {
     //     id : 0,
 
