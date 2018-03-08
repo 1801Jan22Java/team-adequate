@@ -15,6 +15,7 @@ import com.adequate.beans.Itinerary;
 import com.adequate.service.ItineraryService;
 import com.adequate.util.CurrentUser;
 
+
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller("itineraryController")
 @RequestMapping("/itinerary")

@@ -17,7 +17,7 @@ import com.adequate.service.RealPersonService;
 import com.adequate.util.CurrentUser;
 
 class UpdatePerson{
-	
+	// Object received from Client, representing info client has access to
 	private String email;
 	private String fname;
 	private String lname;
@@ -62,30 +62,41 @@ class UpdatePerson{
 @RequestMapping("/account")
 public class ProfileController {
 
+	// go-between for people in the database and Controller
 	@Autowired 
 	private RealPersonService personService;
 	
+	//response to all HTTP GETs, create a 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<String> getProfile(){
 		System.out.println("User Get");
-		System.out.println("id: " + CurrentUser.getUserID());
+		
 		Person user = personService.getPersonById(CurrentUser.getUserID());
-		System.out.println(user.getEmail());
-		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
+		
+		if(user != null) {
+			return new ResponseEntity<>("{ \"status\": \"success\",\"fname\": \" "+ user.getFirstname() + "\", "
+					+ "\"lname\": \" " + user.getLastname() + "\", \"email\": \" "+ user.getEmail() + "\","
+					 + " \"description\": \" "+ user.getAbout() + "\", \"id\": \" "+ user.getPersonID() + "\"  }", HttpStatus.ACCEPTED);
+		}
+		else {
+			return new ResponseEntity<>("{ \"status\": \"fail\"  }", HttpStatus.OK);
+		}
+		
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> updateProfile(@RequestBody UpdatePerson person){
-				
+		System.out.println("test1: " + person.getEmail());	
 		// use the email from RequestBody to get the desired person object from DB
 		Person comparePerson = personService.getPersonById(personService.getIdByEmail(person.getEmail()));
-		
+		System.out.println("test2");
 		if(comparePerson == null) {
 			return new ResponseEntity<>("{\"status\":\"does_not_exist\"}", HttpStatus.OK);
 		} else {
 			comparePerson.setFirstname(person.getFname());
 			comparePerson.setLastname(person.getLname());
 			comparePerson.setAbout(person.getDesc());
+			/*
 			try {
 				byte [] image = person.getImg().getBytes(1l, (int) person.getImg().length());
 				comparePerson.setImage(image);
@@ -93,8 +104,12 @@ public class ProfileController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
+=======
+			*/
 			//comparePerson.setImage(person.getImg());
 			// gonna figure out how to convert blob to byte[]
+>>>>>>> b04ca05970a5794ed16d99334b6831376675166c
 		}
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
