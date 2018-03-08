@@ -49,7 +49,7 @@ export class PlaceComponent implements OnInit {
   reviewRatingString : string = 'Rating: &#x272F; &#x272F; &#x272F;';
 
   submitReview(){
-    this.httpService.submitReview(this.rating, this.review);
+    this.httpService.submitReview(this.rating, this.review, this.place.id);
   }
 
   changeRatingString() : void {

@@ -27,7 +27,7 @@ export class PlaceCardComponent implements OnInit {
 
   onClick(){
     this.place = new Place();
-    this.place.id = 69;
+    this.place.id = '';
     if(this.place == null){
       //This shouldnt happen
       //Punish them

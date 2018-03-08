@@ -15,7 +15,28 @@ export class AccountPageComponent implements OnInit {
               private populateService: PopulateService) { }
 
   ngOnInit() {
-    this.user = this.populateService.populateAccount();
+    
+    this.user = new User;
+    this.httpService.retrieveUserInfo().subscribe(data => {
+
+      if(data['status'] == 'success'){
+        this.user.firstname = data['fname'];
+        this.user.lastname = data['lname'];
+        this.user.username = data['email'];
+        this.user.description = data['description'];
+        this.user.id = data['id'];
+      }
+      else{
+        this.user.firstname = 'Invalid';
+        this.user.lastname = 'Invalid';
+        this.user.username = 'Invalid';
+        this.user.description = 'Invalid';
+        this.user.id = -1;
+      }
+      
+      //user.profilePic = data['img'];
+    });
+
     this.listPlaces = this.populateService.populatePlaces();
 
     //Set the bound variables to loaded in user
@@ -33,10 +54,12 @@ export class AccountPageComponent implements OnInit {
 
   //Hook this up to the backend
   updateInfo(){
-    //console.log(this.userImg);
+    console.log( this.user.firstname);
     //var reader = new FileReader();
 
     let file : File = document.getElementById("changeProfilePicture")['files'][0];
+
+    //Slice converts file to a blob; only do this if file has been chosen
     if(file != null)
       this.userImg = file.slice();
 
@@ -46,8 +69,9 @@ export class AccountPageComponent implements OnInit {
     //console.log(this.userImg);
    // let reader = new FileReader();
    // reader.readAsText();
-    this.httpService.updateAccountInfo(this.username, this.firstname, this.lastname, this.description, file).subscribe( 
-      data => console.log("todo")
+
+    this.httpService.updateAccountInfo(this.user.username, this.user.firstname, this.user.lastname, this.user.description, file).subscribe( 
+      data => console.log("account info update sent")
     );
   }
 }
