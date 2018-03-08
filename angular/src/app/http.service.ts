@@ -7,7 +7,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 
 
 //const baseUrl : string = 'http://ec2-18-218-126-211.us-east-2.compute.amazonaws.com:8080/AdequateTravel/';
-const baseUrl : string = 'http://localhost:8080/AdequateTravel/';
+const baseUrl : string = 'http://localhost:8084/AdequateTravel/';
 //http://localhost:8080/AdequateTravel/login
 
 @Injectable()
@@ -35,13 +35,13 @@ export class HttpService {
   {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
   }
 
-  searchPlaces(description : string, distance : number, price : number ) : Observable<Object> {
+  searchPlaces(description : string, keyword : string, distance : number, price : number ) : Observable<Object> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     const options = new RequestOptions({headers: headers});
 
-    return this.http.get(baseUrl + 'search/placeSearch?query=' + description + "&distance=" + distance + "&price=" + price,
+    return this.http.get(baseUrl + 'search/placeSearch?query=' + description + "&keyword=" + keyword + "&distance=" + distance + "&price=" + price,
   {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
   }
 

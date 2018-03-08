@@ -15,7 +15,7 @@ export class AccountPageComponent implements OnInit {
               private populateService: PopulateService) { }
 
   ngOnInit() {
-    
+
     this.user = new User;
     this.httpService.retrieveUserInfo().subscribe(data => {
 
@@ -33,11 +33,9 @@ export class AccountPageComponent implements OnInit {
         this.user.description = 'Invalid';
         this.user.id = -1;
       }
-      
+
       //user.profilePic = data['img'];
     });
-
-    this.listPlaces = this.populateService.populatePlaces();
 
     //Set the bound variables to loaded in user
   }
@@ -70,7 +68,7 @@ export class AccountPageComponent implements OnInit {
    // let reader = new FileReader();
    // reader.readAsText();
 
-    this.httpService.updateAccountInfo(this.user.username, this.user.firstname, this.user.lastname, this.user.description, file).subscribe( 
+    this.httpService.updateAccountInfo(this.user.username, this.user.firstname, this.user.lastname, this.user.description, file).subscribe(
       data => console.log("account info update sent")
     );
   }
