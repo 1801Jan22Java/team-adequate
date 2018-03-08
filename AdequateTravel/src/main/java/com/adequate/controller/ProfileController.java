@@ -108,12 +108,11 @@ public class ProfileController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-=======
+
 			*/
 			//comparePerson.setImage(person.getImg());
 			// gonna figure out how to convert blob to byte[]
->>>>>>> b04ca05970a5794ed16d99334b6831376675166c
+			
 		}
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);

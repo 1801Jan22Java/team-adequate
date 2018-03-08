@@ -25,44 +25,28 @@ import com.adequate.util.CurrentUser;
 
 class MockReview {
 	
-	public MockReview() {
-		super();
-	}
+	private int rating;
+	private String review;
+	private String placeID;
 	
-	public MockReview(Integer rating, String review, String placeID) {
-		super();
-		this.rating = rating;
-		this.review = review;
-		this.placeID = placeID;
-	}
-
-	public Integer getRating() {
+	public int getRating() {
 		return rating;
 	}
-
-	public void setRating(Integer rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
-
 	public String getReview() {
 		return review;
 	}
-
 	public void setReview(String review) {
 		this.review = review;
 	}
-
 	public String getPlaceID() {
 		return placeID;
 	}
-
 	public void setPlaceID(String placeID) {
 		this.placeID = placeID;
 	}
-
-	Integer rating;
-	String review;
-	String placeID;
 
 }
 
@@ -79,26 +63,34 @@ public class ReviewController {
 	
 	@Autowired
 	private PersonService realPersonService;
-
-	@RequestMapping(method=RequestMethod.POST)
+	
+	@RequestMapping(value="/submit", method=RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> createReview(@RequestBody MockReview mockReview) {
 
+		System.out.println(mockReview.getPlaceID() + mockReview.getRating() + mockReview.getReview());
 		// Get user who wrote the mockReview from the session in current user
 		if (CurrentUser.getValidSession()) {
 			
 			Location l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
 			// if location doesn't yet exist in database, create new 
 			if(realLocationService.getLocationByPlaceId(mockReview.getPlaceID()) == null) {
+				System.out.println("1");
 				realLocationService.addLocation(new Location(mockReview.getPlaceID()));
+				System.out.println("2");
 				l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
-				realReviewService.addReview(new Review(l.getLocationId(), CurrentUser.getUserID(), 
-						mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating()));
+				System.out.println("3");
+				Review review = new Review(l.getLocationId(), CurrentUser.getUserID(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
+				System.out.println("4");
+				review.setLocationList(l);
+				System.out.println("5");
+				realReviewService.addReview(review);
 			} else { // use existing location 
-				realReviewService.addReview(new Review(l.getLocationId(), CurrentUser.getUserID(), 
-						mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating()));
+				System.out.println("ded");
+				Review review = new Review(l.getLocationId(), CurrentUser.getUserID(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
+				review.setLocationList(l);
+				realReviewService.addReview(review);
 			}
-			
 			
 		} else {
 			return new ResponseEntity<>("{\"status\":\"invalid\"}", HttpStatus.OK);
@@ -113,6 +105,7 @@ public class ReviewController {
 	@RequestMapping(value="/byPlace", method=RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Review>> getReviewsByPlace(@RequestParam("placeID") String placeID){
+		System.out.println("getting place");
 		List<Review> placeReviews = realReviewService.getReviewsByPlace(placeID);
 		return new ResponseEntity<List<Review>>(placeReviews, HttpStatus.OK);
 	}
