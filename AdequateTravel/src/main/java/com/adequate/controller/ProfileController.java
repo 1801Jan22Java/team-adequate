@@ -72,9 +72,9 @@ public class ProfileController {
 		Person user = personService.getPersonById(CurrentUser.getUserID());
 		
 		if(user != null) {
-			return new ResponseEntity<>("{ \"status\": \"success\",\"fname\": \" "+ user.getFirstname() + "\", "
-					+ "\"lname\": \" " + user.getLastname() + "\", \"email\": \" "+ user.getEmail() + "\","
-					 + " \"description\": \" "+ user.getAbout() + "\", \"id\": \" "+ user.getPersonID() + "\"  }", HttpStatus.ACCEPTED);
+			return new ResponseEntity<>("{\"status\":\"success\",\"fname\":\""+ user.getFirstname() +"\","
+					+ "\"lname\": \"" + user.getLastname() + "\",\"email\":\""+ user.getEmail()+"\","
+					 + "\"description\":\""+ user.getAbout()+"\",\"id\":\""+ user.getPersonID()+"\"}", HttpStatus.ACCEPTED);
 		}
 		else {
 			return new ResponseEntity<>("{ \"status\": \"fail\"  }", HttpStatus.OK);
@@ -84,16 +84,20 @@ public class ProfileController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> updateProfile(@RequestBody UpdatePerson person){
-		System.out.println("test1: " + person.getEmail());	
+		
 		// use the email from RequestBody to get the desired person object from DB
-		Person comparePerson = personService.getPersonById(personService.getIdByEmail(person.getEmail()));
-		System.out.println("test2");
+		System.out.println("id: " + personService.getIdByEmail(person.getEmail()));
+		Person comparePerson = personService.getPersonById(personService.getIdByEmail(person.getEmail().trim()));
 		if(comparePerson == null) {
+			System.out.println("null");
 			return new ResponseEntity<>("{\"status\":\"does_not_exist\"}", HttpStatus.OK);
 		} else {
+			System.out.println("not null");
 			comparePerson.setFirstname(person.getFname());
 			comparePerson.setLastname(person.getLname());
 			comparePerson.setAbout(person.getDesc());
+			
+			personService.updatePerson(comparePerson);
 			/*
 			try {
 				byte [] image = person.getImg().getBytes(1l, (int) person.getImg().length());

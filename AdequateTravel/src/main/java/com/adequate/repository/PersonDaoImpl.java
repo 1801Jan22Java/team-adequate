@@ -65,7 +65,7 @@ public class PersonDaoImpl implements PersonDao{
 				.add(Restrictions.eq("email", email));
 		Person person = (Person) c.uniqueResult();
 		s.close();
-		return person.getPersonID();
+		return person == null ? -1 : person.getPersonID();
 	}
 
 }
