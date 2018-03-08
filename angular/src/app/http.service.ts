@@ -14,6 +14,29 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
+  searchUser (id : string) : Observable<Object> {
+    console.log("ID IS HERE");
+    console.log(id);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(baseUrl + 'search/person?personID=' + id,
+  {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
+
+  }
+
+  searchUsers (query : string ) : Observable<Object> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(baseUrl + 'search/people?query=' + query,
+  {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
+  }
+
   convertLatLong (description : string ) : Observable<Object> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

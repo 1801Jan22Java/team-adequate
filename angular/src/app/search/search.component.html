@@ -14,7 +14,8 @@
 
       <div class="login-form">
             <input [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" list="searchText" placeholder="Find an adequate trip!"  (keyup)="loadAutocomplete()"/>
-            <button type="submit" (click)="populateSearchResults()" class="btn btn-default">Search</button>
+            <button *ngIf="!searchPeople" type="submit" (click)="populateSearchResults()" class="btn btn-default">Search</button>
+            <button *ngIf="searchPeople" type="submit" (click)="populateSearchPeople()" class="btn btn-default">Search</button>
             <div *ngIf="!searchPeople">
               <datalist *ngIf="showAutocomplete" class="autocomplete" id="searchText">
                 <div *ngFor="let place of listPlaces; let adfas of listPlaces[place]">
@@ -78,10 +79,21 @@
       </div>
 
     </div>
-    <div *ngFor="let inputPlace of listResultPlaces" >
-      <div class="col-sm-4">
-        <app-place-card [place]="inputPlace"></app-place-card>
+    <div *ngIf="!searchPeople">
+      <div *ngFor="let inputPlace of listResultPlaces" >
+        <div class="col-sm-4">
+          <app-place-card [place]="inputPlace"></app-place-card>
+        </div>
       </div>
     </div>
+    <div *ngIf="searchPeople">
+      <div *ngFor="let inputUser of listUsers" >
+        <div class="col-sm-4">
+          <app-user-card [user]="inputUser"></app-user-card>
+        </div>
+      </div>
+
+    </div>
+
 
 </div>

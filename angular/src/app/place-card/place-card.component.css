@@ -14,6 +14,9 @@ img {
     font-family: "Roboto", sans-serif;
     color: grey;
     font-size: 18px;
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .blurb {

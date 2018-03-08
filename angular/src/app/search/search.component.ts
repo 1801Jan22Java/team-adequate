@@ -41,13 +41,14 @@ export class SearchComponent implements OnInit {
   }
 
   populateAutocomplete() : void {
-    this.listPlaces = [];
-    this.httpService.autocomplete(this.searchValue).subscribe(data => {console.log(data);this.populateAutocompleteHelper(data['predictions'])});
-    console.log(this.listPlaces);
+    if (!this.searchPeople) {
+      this.listPlaces = [];
+      this.httpService.autocomplete(this.searchValue).subscribe(data => {console.log(data);this.populateAutocompleteHelper(data['predictions'])});
+      console.log(this.listPlaces);
+    }
   }
 
   populateSearchResultsHelper(listResults : Object []) : Place [] {
-    console.log(listResults);
     var placeList : Place [] = [];
     for(let result in listResults) {
       var place : Place = {
@@ -65,10 +66,30 @@ export class SearchComponent implements OnInit {
   }
 
   populateSearchResults() : void {
+    // this.listPlaces[0]['description'] = this.listPlaces[0]['description'].split(' ').join('+');
     console.log(this.listPlaces[0]['description']);
     this.listResultPlaces = [];
-    this.httpService.searchPlaces(this.listPlaces[0]['description'].replace(' ','+'),this.searchCategory,this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateSearchResultsHelper(data['results']));
+    this.httpService.searchPlaces(this.listPlaces[0]['description'],this.searchCategory,this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateSearchResultsHelper(data['results']));
     console.log(this.listResultPlaces);
+  }
+
+  populateSearchPeopleHelper(results : Object){
+    for(var i in results) {
+      console.log(results[i]);
+      let user : User = {
+        id : results[i]['personID'],
+        username : results[i]['email'],
+        firstname : results[i]['firstname'],
+        lastname : results[i]['lastname'],
+        description : results[i]['about'],
+        profilePic : "http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"
+      };
+      this.listUsers.push(user);
+    }
+  }
+  populateSearchPeople() : void {
+    this.listUsers = [];
+    this.httpService.searchUsers(this.searchValue).subscribe(data => {this.populateSearchPeopleHelper(data);});
   }
 
   loadAutocomplete() : void {
@@ -79,6 +100,8 @@ export class SearchComponent implements OnInit {
       this.populateAutocomplete();
     } else {
       this.showAutocomplete = false;
+      let p : Place = {id : "", rating : 0, placeTypes : [], placePictures : [], description : this.searchValue};
+      this.listPlaces = [p];
     }
   }
 
