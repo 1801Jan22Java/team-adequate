@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import {Http, Headers, RequestOptions} from '@angular/http';
 
-//const baseUrl : string = 'http://ec2-18-218-126-211.us-east-2.compute.amazonaws.com:8080/AdequateTravel/';
-const baseUrl : string = 'http://localhost:8084/AdequateTravel/';
+// const baseUrl : string = 'http://ec2-18-218-126-211.us-east-2.compute.amazonaws.com:8080/AdequateTravel/';
+const baseUrl : string = 'http://localhost:8080/AdequateTravel/';
 //http://localhost:8080/AdequateTravel/login
 
 @Injectable()

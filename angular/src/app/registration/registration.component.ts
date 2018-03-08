@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
       }
       else{
         //TODO:: make something happen here to let user know they done messed up
-        console.log('Invalid login!');
+        console.log('Invalid something!');
       }
     })
     }
