@@ -104,8 +104,8 @@ public class ReviewController {
 		
 		for(int i = 0; i < placeReviews.size(); i++) {
 			jsonString += "{\"rating\":\""+placeReviews.get(i).getRating()+"\",\"body\":\""+placeReviews.get(i).getReviewBody()+"\"";
-			jsonString += i < placeReviews.size() - 1 ? "," : "";
 			jsonString += "}";
+			jsonString += i < placeReviews.size() - 1 ? "," : "";
 		}
 		
 		jsonString += "]";
