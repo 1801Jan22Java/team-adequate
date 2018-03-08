@@ -9,6 +9,8 @@ public interface PersonDao {
 	
 	public List<Person> getAllPeople();
 	
+	public List<Person> getLikeSearch(String query);
+	
 	public Person getPersonById(int id);
 	
 	public void addPerson(Person p);
@@ -16,4 +18,5 @@ public interface PersonDao {
 	public void updatePerson(Person p);
 
 	public int getIdByEmail(String email);
+	
 }

@@ -1,5 +1,6 @@
 package com.adequate.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -8,6 +9,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -66,6 +68,19 @@ public class PersonDaoImpl implements PersonDao{
 		Person person = (Person) c.uniqueResult();
 		s.close();
 		return person == null ? -1 : person.getPersonID();
+	}
+
+	@Override
+	public List<Person> getLikeSearch(String query) {
+		List<Person> listPeople = new ArrayList<Person>();
+		Session s = sessionFactory.openSession();
+		List<Person> fnameList = s.createCriteria(Person.class).add(Restrictions.like("firstname", query+"%") ).list();
+		List<Person> lnameList = s.createCriteria(Person.class).add(Restrictions.like("lastname", query+"%") ).list();
+		List<Person> emailList = s.createCriteria(Person.class).add(Restrictions.like("email", query+"%") ).list();
+		listPeople.addAll(fnameList);
+		listPeople.addAll(lnameList);
+		listPeople.addAll(emailList);
+		return listPeople;
 	}
 
 }
