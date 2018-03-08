@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component(value="review")
 public class Review {
 
-	public Review(int locationID, int userID, String reviewBody, Date timeOfReview, int rating) {
+	public Review(int locationID, String reviewBody, Date timeOfReview, int rating) {
 		super();
 		this.reviewBody = reviewBody;
 		this.timeOfReview = timeOfReview;
@@ -48,11 +48,11 @@ public class Review {
 		return reviewID;
 	}
 
-	public Location getLocationList() {
+	public Location getLocation() {
 		return location;
 	}
 
-	public void setLocationList(Location location) {
+	public void setLocation(Location location) {
 		this.location = location;
 	}
 
@@ -84,6 +84,8 @@ public class Review {
 		return person;
 	}
 
-
+	public void setPerson(Person p) {
+		this.person = p;
+	}
 
 }

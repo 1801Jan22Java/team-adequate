@@ -98,12 +98,8 @@ public class ProfileController {
 			comparePerson.setFirstname(person.getFname());
 			comparePerson.setLastname(person.getLname());
 			comparePerson.setAbout(person.getDesc());
-			
-<<<<<<< HEAD
-=======
 			personService.updatePerson(comparePerson);
 			/*
->>>>>>> 7bdb7ebe656e1e853aeece146ed2f060dddc732a
 			try {
 				byte [] image = person.getImg().getBytes(1l, (int) person.getImg().length());
 				comparePerson.setImage(image);
@@ -111,14 +107,10 @@ public class ProfileController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-=======
 
 			*/
 			//comparePerson.setImage(person.getImg());
 			// gonna figure out how to convert blob to byte[]
-			
->>>>>>> 7bdb7ebe656e1e853aeece146ed2f060dddc732a
 		}
 		
 		return new ResponseEntity<>("{\"status\":\"success\"}", HttpStatus.ACCEPTED);
