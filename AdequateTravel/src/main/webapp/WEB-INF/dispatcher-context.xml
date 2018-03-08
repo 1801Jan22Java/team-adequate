@@ -11,7 +11,7 @@
 
 	<!-- enable MVC annotations -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
+
 	<mvc:cors>
 		<mvc:mapping path="/**" allowed-origins="http://localhost:4200"/>
 	</mvc:cors>
@@ -27,7 +27,7 @@
 	</bean>
 	
 	<!-- enable static resource retrieval -->
-	<mvc:resources mapping="/static/**" location="/WEB-INF/static/"></mvc:resources>
+	<mvc:resources mapping="/static/**" location="http://ec2-18-218-126-211.us-east-2.compute.amazonaws.com:8080/AdequateTravel/static/"></mvc:resources>
 	
 	
 </beans>
