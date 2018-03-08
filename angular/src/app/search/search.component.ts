@@ -41,9 +41,11 @@ export class SearchComponent implements OnInit {
   }
 
   populateAutocomplete() : void {
-    this.listPlaces = [];
-    this.httpService.autocomplete(this.searchValue).subscribe(data => {console.log(data);this.populateAutocompleteHelper(data['predictions'])});
-    console.log(this.listPlaces);
+    if (!this.searchPeople) {
+      this.listPlaces = [];
+      this.httpService.autocomplete(this.searchValue).subscribe(data => {console.log(data);this.populateAutocompleteHelper(data['predictions'])});
+      console.log(this.listPlaces);
+    }
   }
 
   populateSearchResultsHelper(listResults : Object []) : Place [] {
@@ -69,6 +71,25 @@ export class SearchComponent implements OnInit {
     this.listResultPlaces = [];
     this.httpService.searchPlaces(this.listPlaces[0]['description'].replace(' ','+'),this.searchCategory,this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateSearchResultsHelper(data['results']));
     console.log(this.listResultPlaces);
+  }
+
+  populateSearchPeopleHelper(results : Object){
+    for(var i in results) {
+      console.log(results[i]);
+      let user : User = {
+        id : results[i]['personID'],
+        username : results[i]['email'],
+        firstname : results[i]['firstname'],
+        lastname : results[i]['lastname'],
+        description : results[i]['about'],
+        profilePic : "http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"
+      };
+      this.listUsers.push(user);
+    }
+  }
+  populateSearchPeople() : void {
+    this.listUsers = [];
+    this.httpService.searchUsers(this.searchValue).subscribe(data => {this.populateSearchPeopleHelper(data);});
   }
 
   loadAutocomplete() : void {

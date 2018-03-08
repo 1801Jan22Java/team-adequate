@@ -86,31 +86,6 @@ export class PopulateService {
     }
     return userList;
   }
-/*
-  populateAccount() {
-    let user : User = new User();
-    this.httpService.retrieveUserInfo().subscribe(data => {
-      user.firstname = data['fname'];
-      user.lastname = data['lname'];
-      user.username = data['email'];
-      user.description = data['description'];
-      user.id = data['id'];
-      //user.profilePic = data['img'];
-      return user;
-    }
-    );
 
-    // var  user : User = {
-    //     id : 0,
-
-    //     username : "Account username",
-    //     firstname : "firstname",
-    //     lastname : "lastname",
-    //     description : "This is a test description for the user",
-    //     profilePic : "https://tse4.mm.bing.net/th?id=OIP.dfuGcOmQ7cyBB2Zeuc8IQQHaHa&pid=Api"
-    //   };
-    // return user;
-  }
-*/
 
 }
