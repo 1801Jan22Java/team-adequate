@@ -38,7 +38,7 @@ export class PlaceComponent implements OnInit {
     if (this.place.placePictures != null) {
       for(var i = 0; i < this.place.placePictures.length; i ++ ) {
         if (i < 4) {
-          this.place.placePictures[i] = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&maxheight=1000&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
+          this.place.placePictures[i] = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&maxheight=1000&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyCGEQ_o177Hxt9jtdNNVbuJGoMGLcX8tY4";
         } else {
           delete this.place.placePictures[i];
         }

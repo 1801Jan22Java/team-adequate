@@ -29,7 +29,7 @@ export class PlaceCardComponent implements OnInit {
   convertImage() {
     if (this.place.placePictures != null) {
       for(var i = 0; i < this.place.placePictures.length; i ++ ) {
-        this.place.placePictures[i] =   "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&maxheight=1000&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
+        this.place.placePictures[i] =   "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&maxheight=1000&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyCGEQ_o177Hxt9jtdNNVbuJGoMGLcX8tY4";
       }
     } else {
       this.place.placePictures = ["http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"];
@@ -38,7 +38,7 @@ export class PlaceCardComponent implements OnInit {
   }
 
   onClick(){
-    
+
     console.log(this.place.id);
     if(this.place == null){
       //This shouldnt happen
