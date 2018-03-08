@@ -16,7 +16,7 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.populateService.populateUsers()[0];
-    this.listPlaces = this.populateService.populatePlaces();
+    // this.listPlaces = this.populateService.populatePlaces();
   }
   user : User;
   listPlaces : Place [] = []

@@ -15,7 +15,27 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  searchPlaces(description : string,distance : number, price : number ) : Observable<Object> {
+  convertLatLong (description : string ) : Observable<Object> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(baseUrl + 'search/conversion?query=' + description,
+  {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
+  }
+
+  searchPlace(id : string ) : Observable<Object> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+
+    return this.http.get(baseUrl + 'search/placeDetailsSearch?placeID=' + id,
+  {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}});
+  }
+
+  searchPlaces(description : string, distance : number, price : number ) : Observable<Object> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 

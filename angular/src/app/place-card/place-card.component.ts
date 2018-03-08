@@ -15,6 +15,7 @@ export class PlaceCardComponent implements OnInit {
 
   ngOnInit() {
     this.createRatingString();
+    console.log(this.place.placePictures[0]);
   }
 
   createRatingString() {

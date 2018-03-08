@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { Review } from '../review';
-import { HttpService } from '../Http.service';
-import { ActivatedRoute } from '@angular/router';
+import { HttpService } from '../http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-place',
@@ -12,12 +12,38 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PlaceComponent implements OnInit {
 
-  constructor(private populateService : PopulateService, private httpService: HttpService, private route: ActivatedRoute) { }
+  constructor(private populateService : PopulateService, private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
-    this.place = this.populateService.populatePlace();
     this.populateListReviews();
-    this.createRatingString();
+    this.place = this.populateService.populatePlace();
+    this.httpService.searchPlace(this.placeID).subscribe(data =>
+    {
+      console.log("HERERERERERER");
+      console.log(data);
+      // this.place.id = data[]
+      this.place.id = this.placeID;
+      this.place.description = data['result']['name'];
+      this.place.placeTypes = data['result']['types'];
+      this.place.placePictures = data['result']['photos'];
+      this.place.rating = parseInt(data['result']['rating']);
+      this.convertImage();
+      console.log(this.place);
+      this.createRatingString();
+    });
+
+
+  }
+
+  convertImage() {
+    for(var i = 0; i < this.place.placePictures.length; i ++ ) {
+      // console.log(photo);
+      if (i < 4) {
+        this.place.placePictures[i] = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&maxheight=250&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyAvaHh8JH7aOABXm2NQzO9OveT5VLNDQXU";
+      } else {
+        delete this.place.placePictures[i];
+      }
+    }
   }
 
   createRatingString() {
@@ -26,23 +52,17 @@ export class PlaceComponent implements OnInit {
     }
   }
 
-  placeID : number = -1;
-
   populateListReviews() {
     console.log("getting id");
-    this.route.queryParamMap.subscribe(params => {
-      this.placeID = params['id'];
-    })
+    console.log(this.router.url.split('=')[1]);
+    this.placeID = this.router.url.split('=')[1];
 
-    console.log(this.placeID);
-
-    //this.listReviews = this.populateService.populateReviews();
   }
 
+  placeID : string = "ii";
   listReviews : Review [] = [];
   place : Place;
   ratingString : string = 'Rating ';
-
 
   rating : number = 3;
   review : string;

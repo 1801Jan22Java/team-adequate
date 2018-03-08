@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../Http.service';
+import { HttpService } from '../http.service';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { User } from '../user';
@@ -17,16 +17,35 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  populateAutocompleteHelper(data : Object) : void {
+    for(let entry in data) {
+      console.log(data[entry]['description']);
+      console.log(data[entry]['place_id']);
+      var place : Place = {
+        id : data[entry]['place_id'],
+        rating : data[entry]['rating'],
+        description : data[entry]['description'],
+        placeTypes : [],
+        placePictures : []
+      };
+      this.listPlaces.push(place);
+
+    }
+  }
+
   populateAutocomplete() : void {
     this.listPlaces = [];
-    this.httpService.autocomplete(this.searchValue).subscribe(data => { for(let entry in data['predictions']) {
-                                                                        this.listPlaces.push(data['predictions'][entry]['description']);
-                                                                      }});
+    this.httpService.autocomplete(this.searchValue).subscribe(data => {console.log(data);this.populateAutocompleteHelper(data['predictions'])});
+    console.log(this.listPlaces);
+  }
+
+  populateSearchResultsHelper() : void {
+
   }
 
   populateSearchResults() : void {
-    console.log(this.listPlaces[0]);
-    this.httpService.searchPlaces(this.listPlaces[0],this.searchDistance,this.searchPrice).subscribe(data => console.log(data));
+    console.log(this.listPlaces[0]['description']);
+    this.httpService.searchPlaces(this.listPlaces[0]['description'].replace(' ','+'),this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateService.populatePlaces(data['results']));
   }
 
   loadAutocomplete() : void {
@@ -38,6 +57,10 @@ export class SearchComponent implements OnInit {
     } else {
       this.showAutocomplete = false;
     }
+  }
+
+  setSearchCategory() : void {
+    console.log(this.searchCategory)
   }
 
   toggleAdvanced() : void {
@@ -62,6 +85,7 @@ export class SearchComponent implements OnInit {
   }
 
   //Search params
+  searchCategory : string = "";
   searchId : string = "";
   searchValue : string = "";
   searchPeople : boolean = false;
@@ -74,6 +98,6 @@ export class SearchComponent implements OnInit {
   searchPriceString : string = '$';
   // searchRatingString :string =  'Rating: &#x272F;';
   listUsers : User [] = [];
-  listPlaces : string [] = [];
+  listPlaces : Place [] = [];
   listResultPlaces : Place [] = [];
 }
