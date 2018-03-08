@@ -22,7 +22,7 @@ public class CurrentUser {
 	}
 	
 	public static int getUserID() {
-		return userID;
+		return userID != null ? userID : -1;
 	}
 
 	public static String getUsername() {

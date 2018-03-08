@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/search")
 public class SearchController {
 //	private final String  apiKey = "&key=AIzaSyAvaHh8JH7aOABXm2NQzO9OveT5VLNDQXU";
-	private final String  apiKey = "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
+	private final String  apiKey = "&key=AIzaSyCGEQ_o177Hxt9jtdNNVbuJGoMGLcX8tY4";
 	
 	private final String secondaryApiKey = "&key=AIzaSyA-cqeJ3xy8IXWiIffplTwOUqZODVvMBps";
 	private final String apiKeyGeocode = "&key=AIzaSyA4k2FBjButfxabh_rgO6DbK7_LSBQN538";
