@@ -15,19 +15,19 @@ export class RegistrationComponent implements OnInit {
   regpassword : string;
   regfirstname : string;
   reglastname : string;
-  invalidEmail : boolean = true;
+  failedRegister : boolean = false;
 
   ngOnInit() {
   }
 
   register(){
+    this.failedRegister = false;
     this.httpService.register(this.regfirstname, this.reglastname, this.regusername, this.regpassword).subscribe(
       data => {if(data['status'] == 'success'){
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/login?register=success');
       }
       else{
-        //TODO:: make something happen here to let user know they done messed up
-        console.log('Invalid something!');
+        this.failedRegister = true;
       }
     })
     }
