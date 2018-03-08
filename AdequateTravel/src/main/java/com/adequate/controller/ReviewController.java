@@ -107,7 +107,10 @@ public class ReviewController {
 		String jsonString = "[";
 		
 		for(int i = 0; i < placeReviews.size(); i++) {
-			jsonString += "{\"rating\":\""+placeReviews.get(i).getRating()+"\",\"body\":\""+placeReviews.get(i).getReviewBody()+"\"";
+			
+			jsonString += "{\"rating\":\""+placeReviews.get(i).getRating()+"\",\"body\":\""+placeReviews.get(i).getReviewBody()+"\","
+					+ "\"firstname\":\""+placeReviews.get(i).getPerson().getFirstname()+"\","
+							+ "\"lastname\":\""+placeReviews.get(i).getPerson().getLastname()+"\"";
 			jsonString += "}";
 			jsonString += i < placeReviews.size() - 1 ? "," : "";
 		}
