@@ -75,18 +75,12 @@ public class ReviewController {
 			Location l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
 			// if location doesn't yet exist in database, create new 
 			if(realLocationService.getLocationByPlaceId(mockReview.getPlaceID()) == null) {
-				System.out.println("1");
 				realLocationService.addLocation(new Location(mockReview.getPlaceID()));
-				System.out.println("2");
 				l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
-				System.out.println("3");
 				Review review = new Review(l.getLocationId(), CurrentUser.getUserID(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
-				System.out.println("4");
 				review.setLocationList(l);
-				System.out.println("5");
 				realReviewService.addReview(review);
 			} else { // use existing location 
-				System.out.println("ded");
 				Review review = new Review(l.getLocationId(), CurrentUser.getUserID(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
 				review.setLocationList(l);
 				realReviewService.addReview(review);
@@ -104,16 +98,25 @@ public class ReviewController {
 	
 	@RequestMapping(value="/byPlace", method=RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Review>> getReviewsByPlace(@RequestParam("placeID") String placeID){
-		System.out.println("getting place");
+	public ResponseEntity<String> getReviewsByPlace(@RequestParam("placeID") String placeID){
 		List<Review> placeReviews = realReviewService.getReviewsByPlace(placeID);
-		return new ResponseEntity<List<Review>>(placeReviews, HttpStatus.OK);
+		String jsonString = "[";
+		
+		for(int i = 0; i < placeReviews.size(); i++) {
+			jsonString += "{\"rating\":\""+placeReviews.get(i).getRating()+"\",\"body\":\""+placeReviews.get(i).getReviewBody()+"\"";
+			jsonString += i < placeReviews.size() - 1 ? "," : "";
+			jsonString += "}";
+		}
+		
+		jsonString += "]";
+		return new ResponseEntity<>(jsonString, HttpStatus.OK);
 	}
 	
 	
 	@RequestMapping(value="/byPerson", method=RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Review>> getReviewsByPerson(@RequestParam("email") String email){
+		System.out.println("You shouldnt be here");
 		Integer personID = realPersonService.getIdByEmail(email);
 		List<Review> personReviews = realReviewService.getReviewsByPerson(personID);
 		return new ResponseEntity<List<Review>>(personReviews, HttpStatus.OK);

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.adequate.beans.Location;
 import com.adequate.beans.Review;
 
 @Repository("reviewRepository")
@@ -35,8 +36,10 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public List<Review> getReviewsByPlace(String placeID) {
 		Session s = sessionFactory.openSession();
+		Criteria pc = s.createCriteria(Location.class).add(Restrictions.eq("placeId", placeID));
+		Location l = (Location) pc.uniqueResult();
 		Criteria c = s.createCriteria(Review.class)
-				.add(Restrictions.eq("placeid", placeID));
+				.add(Restrictions.eq("location", l));
 		List<Review> rs = c.list();
 		s.close();
 		return rs;
