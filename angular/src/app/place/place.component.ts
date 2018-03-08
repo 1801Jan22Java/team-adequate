@@ -56,7 +56,17 @@ export class PlaceComponent implements OnInit {
     console.log(this.router.url.split('=')[1]);
     this.placeID = this.router.url.split('=')[1];
     this.httpService.getReviews(this.placeID).subscribe(data=>{
-      //TODO::Get response json, add review cards to list
+      console.log(data);
+      for(let i in data ){
+        let review : Review = new Review();
+        review.rating = data[i]['rating'];
+        review.review = data[i]['body'];
+        review.firstname = data[i]['firstname'];
+        review.lastname = data[i]['lastname'][0];
+        this.listReviews.push(review);
+        console.log(data[i]['rating'] + data[i]['body']);
+
+      }
     });
   }
 
@@ -71,7 +81,7 @@ export class PlaceComponent implements OnInit {
 
   submitReview(){
     this.httpService.submitReview(this.rating, this.review, this.place.id).subscribe( data => {
-      console.log("Hi");
+      console.log("Review Submitted");
     });
   }
 

@@ -56,6 +56,12 @@
         {{ place.description }}
       </p>
     </div>
+    
+    <div>
+      <p><button data-toggle="modal" data-target="#writeReview"> Write Review </button></p>
+    </div>
+
+    <br><br><br>
     <div *ngFor="let inputReview of listReviews">
       <!-- {{inputReview.username}} -->
       <div class="col-sm-4">
@@ -64,10 +70,7 @@
     </div>
     <br />
     <br />
-    <div>
-      <p><button data-toggle="modal" data-target="#writeReview"> Write Review </button></p>
-    </div>
-
+    
     <div id="placeModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
