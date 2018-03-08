@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { Review } from '../review';
-import { HttpService } from '../Http.service';
+import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -43,8 +43,6 @@ export class PlaceComponent implements OnInit {
           delete this.place.placePictures[i];
         }
       }
-    } else {
-      this.place.placePictures = ["http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg","http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg","http://weknowmemes.com/wp-content/uploads/2013/11/doge-original-meme.jpg"];
     }
   }
 
