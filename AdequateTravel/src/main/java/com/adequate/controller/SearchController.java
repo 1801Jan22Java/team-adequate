@@ -1,6 +1,13 @@
 package com.adequate.controller;
 
-import com.adequate.api.*; 
+import com.adequate.api.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import com.adequate.beans.*;
+import com.adequate.service.PersonService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,6 +34,13 @@ public class SearchController {
 	
 	private String latLongPrefix = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 	
+	@Autowired
+	PersonService personService;
+	
+	@RequestMapping(value="/people",method=RequestMethod.GET)
+	public ResponseEntity<List<Person>> getPeople(@RequestParam("query") String query) {
+		return new ResponseEntity<>(personService.getPeopleLike(query),HttpStatus.CREATED);
+	}
 	
 	@RequestMapping(value="/autoComplete", method=RequestMethod.GET)
 	public ResponseEntity<AutocompletePlaceTemplate> autoComplete(@RequestParam("query") String query){

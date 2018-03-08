@@ -7,6 +7,8 @@ import com.adequate.beans.Person;
 public interface PersonService {
 
 	public List<Person> getAllPeople();
+	
+	public List<Person> getPeopleLike(String query);
 
 	public Person getPersonById(int id);
 

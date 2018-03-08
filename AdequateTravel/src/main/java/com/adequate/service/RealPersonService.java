@@ -18,6 +18,11 @@ public class RealPersonService implements PersonService {
 	public List<Person> getAllPeople() {
 		return personRepository.getAllPeople();
 	}
+	
+	@Override
+	public List<Person> getPeopleLike(String query) {
+		return personRepository.getLikeSearch(query);
+	}
 
 	@Override
 	public Person getPersonById(int id) {
