@@ -27,11 +27,16 @@ export class UserPageComponent implements OnInit {
       username : result['email'],
       firstname : result['fname'],
       lastname : result['lname'],
-      description : result['about'],
+      description : result['description'],
       profilePic : "https://tse4.mm.bing.net/th?id=OIP.dfuGcOmQ7cyBB2Zeuc8IQQHaHa&pid=Api"
 
     };
     this.user = populate;
+    this.user['firstname'] = this.user['firstname'].charAt(0).toUpperCase() + this.user['firstname'].slice(1);
+    this.user['lastname'] = this.user['lastname'].charAt(0).toUpperCase() + this.user['lastname'].slice(1);
+    if (this.user['description'] == 'null') {
+        this.user['description'] = 'I haven\'t set my bio yet :^)';
+    }
   }
 
   populateUser() {

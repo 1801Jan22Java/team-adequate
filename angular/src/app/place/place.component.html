@@ -12,7 +12,7 @@
 
     <!-- Wrapper for slides -->
       <div class="carousel-inner">
-        
+
           <div class="item active">
             <img class="imgItem" src={{place.placePictures[0]}} alt="doge1">
           </div>
@@ -37,23 +37,16 @@
         </a>
 
     </div>
-
-
+    <br />
     <div class="title">
-      <h1>{{ place.name }}</h1>
+      <h1>{{ place.description }}</h1>
     </div>
-
     <br />
     <div class="title">
       <h4 [innerHTML]="ratingString"></h4>
     </div>
     <br />
-    <div>
-      <p>
-        {{ place.description }}
-      </p>
-    </div>
-    
+
     <div>
       <p><button data-toggle="modal" data-target="#writeReview"> Write Review </button></p>
     </div>
@@ -67,7 +60,7 @@
     </div>
     <br />
     <br />
-    
+
     <div id="placeModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 

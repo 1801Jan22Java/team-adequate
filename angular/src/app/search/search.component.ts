@@ -49,7 +49,6 @@ export class SearchComponent implements OnInit {
   }
 
   populateSearchResultsHelper(listResults : Object []) : Place [] {
-    console.log(listResults);
     var placeList : Place [] = [];
     for(let result in listResults) {
       var place : Place = {
@@ -67,9 +66,10 @@ export class SearchComponent implements OnInit {
   }
 
   populateSearchResults() : void {
+    // this.listPlaces[0]['description'] = this.listPlaces[0]['description'].split(' ').join('+');
     console.log(this.listPlaces[0]['description']);
     this.listResultPlaces = [];
-    this.httpService.searchPlaces(this.listPlaces[0]['description'].replace(' ','+'),this.searchCategory,this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateSearchResultsHelper(data['results']));
+    this.httpService.searchPlaces(this.listPlaces[0]['description'],this.searchCategory,this.searchDistance,this.searchPrice).subscribe(data => this.listResultPlaces = this.populateSearchResultsHelper(data['results']));
     console.log(this.listResultPlaces);
   }
 
@@ -100,6 +100,8 @@ export class SearchComponent implements OnInit {
       this.populateAutocomplete();
     } else {
       this.showAutocomplete = false;
+      let p : Place = {id : "", rating : 0, placeTypes : [], placePictures : [], description : this.searchValue};
+      this.listPlaces = [p];
     }
   }
 

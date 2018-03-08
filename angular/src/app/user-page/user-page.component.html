@@ -5,7 +5,10 @@
 
 
     <div class="col-sm-6">
-        <h1 class="title"> {{user.username}} </h1><br>
+      <div>
+          <br><br><br><br><br>
+
+      </div>
         <!-- Should be a fixed size image -->
         <div class= "profilePic">
           <img src="{{user.profilePic}}" class="img-rounded .img-responsive" alt="Profile Picture" height="256" width="256">
@@ -15,17 +18,21 @@
     <div class="col-sm-6">
         <div>
             <br><br><br><br>
+        </div>
+        <div>
+            <h4 class="title" for="email"> Email </h4>
+            <h4 class="title" id="email"> {{user.username}} </h4>
             <br><br>
         </div>
         <div>
-            <label class="title" for="name"> Name </label><br>
-            <p id="name"> {{user.firstname}} {{user.lastname}}</p>
+            <h4 class="title" for="name"> Name </h4>
+            <h4 class="title" id="name"> {{user.firstname}} {{user.lastname}}</h4>
             <br><br>
         </div>
 
         <div>
-              <label class="title" for="desc">About {{user.firstname}}</label>
-              <p id="desc"> {{user.description}} </p>
+              <h4 class="title" for="desc">About {{user.firstname}}</h4>
+              <h4 class="blurb" id="desc"> {{user.description}} </h4>
         </div>
 
         <br><br><br>
