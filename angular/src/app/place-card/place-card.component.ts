@@ -15,7 +15,7 @@ export class PlaceCardComponent implements OnInit {
 
   ngOnInit() {
     this.createRatingString();
-    console.log(this.place.placePictures[0]);
+    this.convertImage();
   }
 
   createRatingString() {
@@ -25,6 +25,13 @@ export class PlaceCardComponent implements OnInit {
   }
 
   ratingString : string = 'Rating ';
+
+  convertImage() {
+    for(var i = 0; i < this.place.placePictures.length; i ++ ) {
+      this.place.placePictures[i] =   "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&maxheight=1000&photoreference=" + this.place.placePictures[i]['photo_reference'] + "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
+    }
+
+  }
 
   onClick(){
 
