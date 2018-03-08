@@ -24,7 +24,7 @@ public class LocationDaoImpl implements LocationDao {
 	public Location getLocationByPlaceId(String placeId) {
 		Session s = sessionFactory.openSession();
 		Criteria c = s.createCriteria(Location.class)
-				.add(Restrictions.eq("place_id", placeId));
+				.add(Restrictions.eq("placeId", placeId));
 		Location l = (Location) c.uniqueResult();
 		s.close();
 		return l;
