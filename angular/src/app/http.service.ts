@@ -7,7 +7,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 
 
 //const baseUrl : string = 'http://ec2-18-218-126-211.us-east-2.compute.amazonaws.com:8080/AdequateTravel/';
-const baseUrl : string = 'http://localhost:8084/AdequateTravel/';
+const baseUrl : string = 'http://localhost:8080/AdequateTravel/';
 //http://localhost:8080/AdequateTravel/login
 
 @Injectable()
@@ -101,14 +101,13 @@ export class HttpService {
     headers.append('Content-Type', 'application/json');
 
     const options = new RequestOptions({headers: headers});
-    console.log("logout")
     return this.http.get(baseUrl + 'validate',
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
 
   }
 
-  submitReview(rating : number, review : string){
+  submitReview(rating : number, review : string, placeID : string){
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -122,6 +121,17 @@ export class HttpService {
     );
   }
 
+  retrieveUserInfo() : Observable<Object>{
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+    return this.http.get(baseUrl + 'account',
+    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
+    );
+  }
+
   updateAccountInfo(username : string, firstname : string, lastname : string, description : string, userImg : File) : Observable<Object> {
 
     const headers = new Headers();
@@ -129,11 +139,20 @@ export class HttpService {
 
     const options = new RequestOptions({headers: headers});
 
-    console.log("Submitting account info for: " + username);
+    console.log("Submitting account info for: " + username + ' desc' + description);
+    //Profile image uploading is currently disabled because it needs a couple hours of figuring out
+    //which are better spent elsewhere
 
-    //Change this route
+    /*
+      private String email;
+      private String fname;
+      private String lname;
+      private String desc;
+      private Blob img;
+    */
+
     return this.http.post(baseUrl + 'account',
-    JSON.stringify({email: username, fname: firstname, lname: lastname, desc: description/*, img: userImg*/}),
+    JSON.stringify({email:username, fname:firstname, lname:lastname, desc:description/*, img: userImg*/}),
     {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
   }
