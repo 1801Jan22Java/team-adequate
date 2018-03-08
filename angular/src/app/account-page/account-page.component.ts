@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user'
 import { Place } from '../place';
-import { HttpService } from '../http.service';
+import { HttpService } from '../Http.service';
 import { PopulateService } from '../populate.service';
 
 @Component({

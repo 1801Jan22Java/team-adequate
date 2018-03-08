@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PopulateService } from '../populate.service';
 import { Place } from '../place';
 import { Review } from '../review';
-import { HttpService } from '../http.service';
+import { HttpService } from '../Http.service';
 import { Router } from '@angular/router';
 
 @Component({
