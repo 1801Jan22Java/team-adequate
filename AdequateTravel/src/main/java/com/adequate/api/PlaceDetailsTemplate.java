@@ -2,11 +2,11 @@ package com.adequate.api;
 
 import java.util.Arrays;
 
-
 class PlaceDetailResult {
 	private String name;
 	private String[] types;
 	private Photo[] photos;
+	private String rating;
 
 	private String formatted_address;
 	private String formatted_phone_number;
@@ -16,15 +16,24 @@ class PlaceDetailResult {
 		super();
 	}
 
-	public PlaceDetailResult(String name, String[] types, Photo[] photos, String formatted_address, String formatted_phone_number,
-			int price_level) {
+	public PlaceDetailResult(String name, String[] types, Photo[] photos, String rating, String formatted_address,
+			String formatted_phone_number, int price_level) {
 		super();
 		this.name = name;
 		this.types = types;
 		this.photos = photos;
+		this.rating = rating;
 		this.formatted_address = formatted_address;
 		this.formatted_phone_number = formatted_phone_number;
 		this.price_level = price_level;
+	}
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
 
 	public Photo[] getPhotos() {
@@ -77,9 +86,9 @@ class PlaceDetailResult {
 
 	@Override
 	public String toString() {
-		return "PlaceDetailResult [name=" + name + ", types=" + Arrays.toString(types) + ", photos=" + Arrays.toString(photos)
-				+ ", formatted_address=" + formatted_address + ", formatted_phone_number=" + formatted_phone_number
-				+ ", price_level=" + price_level + "]";
+		return "PlaceDetailResult [name=" + name + ", types=" + Arrays.toString(types) + ", photos="
+				+ Arrays.toString(photos) + ", rating=" + rating + ", formatted_address=" + formatted_address
+				+ ", formatted_phone_number=" + formatted_phone_number + ", price_level=" + price_level + "]";
 	}
 
 

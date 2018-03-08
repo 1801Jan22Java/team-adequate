@@ -1,5 +1,7 @@
 package com.adequate.api;
 
+import org.springframework.web.client.RestTemplate;
+
 public class Photo {
 	
 	private String photo_reference;
@@ -20,6 +22,7 @@ public class Photo {
 	public void setPhoto_reference(String photo_reference) {
 		this.photo_reference = photo_reference;
 	}
+	
 
 	@Override
 	public String toString() {

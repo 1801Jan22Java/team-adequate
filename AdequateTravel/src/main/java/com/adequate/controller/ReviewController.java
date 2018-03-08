@@ -117,6 +117,7 @@ public class ReviewController {
 		return new ResponseEntity<List<Review>>(placeReviews, HttpStatus.OK);
 	}
 	
+	
 	@RequestMapping(value="/byPerson", method=RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Review>> getReviewsByPerson(@RequestParam("email") String email){

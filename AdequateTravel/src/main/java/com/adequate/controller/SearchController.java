@@ -65,9 +65,4 @@ public class SearchController {
 		return latLong.getLat() + "," + latLong.getLng();
 	}
 	
-	public String convertReferenceToLink(String reference) {
-		return "";
-	}
-
-	
 }
