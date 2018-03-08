@@ -1,6 +1,6 @@
 package com.adequate.repository;
 
-import org.junit.Test;
+import org.junit.Test; 
 
 import com.adequate.beans.Person;
 
