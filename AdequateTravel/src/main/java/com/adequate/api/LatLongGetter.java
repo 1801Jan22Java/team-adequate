@@ -6,7 +6,7 @@ public class LatLongGetter {
 	
 	public static void main(String [] args) {
 		
-		LatLong r = getLatLongTemplate("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyA4k2FBjButfxabh_rgO6DbK7_LSBQN538");
+		LatLong r = getLatLongTemplate("https://maps.googleapis.com/maps/api/geocode/json?address=TEST+MY+SITE,+Main+Drive,+Herndon,+VA,+USA&key=AIzaSyA4k2FBjButfxabh_rgO6DbK7_LSBQN538");
 		System.out.println(r.toString());
 		
 	}

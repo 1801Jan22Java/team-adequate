@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.adequate.beans.*;
 import com.adequate.service.PersonService;
+import com.adequate.util.CurrentUser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/search")
 public class SearchController {
 //	private final String  apiKey = "&key=AIzaSyAvaHh8JH7aOABXm2NQzO9OveT5VLNDQXU";
-	private final String  apiKey = "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
+	
+//	private final String  apiKey = "&key=AIzaSyD6F8kL9qTLMah_akXPFJHCLSoH6k61Las";
+	private final String  apiKey = "&key=AIzaSyCGEQ_o177Hxt9jtdNNVbuJGoMGLcX8tY4";
 	
 	private final String secondaryApiKey = "&key=AIzaSyA-cqeJ3xy8IXWiIffplTwOUqZODVvMBps";
 	private final String apiKeyGeocode = "&key=AIzaSyA4k2FBjButfxabh_rgO6DbK7_LSBQN538";
@@ -36,6 +39,20 @@ public class SearchController {
 	
 	@Autowired
 	PersonService personService;
+	
+	@RequestMapping(value="/person",method=RequestMethod.GET)
+	public ResponseEntity<String> getPerson(@RequestParam("personID") String personID) {
+		Person user = personService.getPersonById(Integer.parseInt(personID));
+		
+		if(user != null) {
+			return new ResponseEntity<>("{\"status\":\"success\",\"id\":\"" + user.getPersonID() + "\",\"fname\":\""+ user.getFirstname() +"\","
+					+ "\"lname\": \"" + user.getLastname() + "\",\"email\":\""+ user.getEmail()+"\","
+					 + "\"description\":\""+ user.getAbout()+"\",\"id\":\""+ user.getPersonID()+"\"}", HttpStatus.ACCEPTED);
+		}
+		else {
+			return new ResponseEntity<>("{ \"status\": \"fail\"  }", HttpStatus.OK);
+		}
+	}
 	
 	@RequestMapping(value="/people",method=RequestMethod.GET)
 	public ResponseEntity<List<Person>> getPeople(@RequestParam("query") String query) {

@@ -1,7 +1,10 @@
 package com.adequate.repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -70,17 +73,29 @@ public class PersonDaoImpl implements PersonDao{
 		return person == null ? -1 : person.getPersonID();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Person> getLikeSearch(String query) {
 		List<Person> listPeople = new ArrayList<Person>();
 		Session s = sessionFactory.openSession();
-		List<Person> fnameList = s.createCriteria(Person.class).add(Restrictions.like("firstname", query+"%") ).list();
-		List<Person> lnameList = s.createCriteria(Person.class).add(Restrictions.like("lastname", query+"%") ).list();
-		List<Person> emailList = s.createCriteria(Person.class).add(Restrictions.like("email", query+"%") ).list();
+		List<Person> fnameList = s.createCriteria(Person.class).add(Restrictions.like("firstname", query+"%").ignoreCase() ).list();
+		List<Person> lnameList = s.createCriteria(Person.class).add(Restrictions.like("lastname", query+"%").ignoreCase() ).list();
+		List<Person> emailList = s.createCriteria(Person.class).add(Restrictions.like("email", query+"%").ignoreCase() ).list();
+		
 		listPeople.addAll(fnameList);
 		listPeople.addAll(lnameList);
 		listPeople.addAll(emailList);
-		return listPeople;
+		HashMap<Integer,String> contains = new HashMap<Integer,String>();
+		List<Person> returnPeople = new ArrayList<Person>();
+		for(Person p : listPeople) {
+			if(!contains.containsKey(p.getPersonID())) {
+				contains.put(p.getPersonID(), p.getFirstname());
+				returnPeople.add(p);
+			}
+		}
+		
+		
+		return returnPeople;
 	}
 
 }
