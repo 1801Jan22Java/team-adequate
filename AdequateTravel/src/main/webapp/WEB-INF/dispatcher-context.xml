@@ -11,7 +11,7 @@
 
 	<!-- enable MVC annotations -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
+
 	<mvc:cors>
 		<mvc:mapping path="/**" allowed-origins="http://localhost:4200"/>
 	</mvc:cors>
