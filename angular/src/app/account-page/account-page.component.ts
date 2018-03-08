@@ -37,8 +37,6 @@ export class AccountPageComponent implements OnInit {
       //user.profilePic = data['img'];
     });
 
-    this.listPlaces = this.populateService.populatePlaces();
-
     //Set the bound variables to loaded in user
   }
 

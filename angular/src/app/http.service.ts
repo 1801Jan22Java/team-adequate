@@ -115,9 +115,20 @@ export class HttpService {
 
     console.log("Submitting review: " + review + " " + rating);
 
-    return this.http.post(baseUrl + 'review',
-    JSON.stringify({rating: rating, reviewBody: review}),
+    return this.http.post(baseUrl + 'review/submit',
+    JSON.stringify({rating: rating, review: review, placeID: placeID}),
     {headers: {'Content-Type': 'application/json'}}
+    );
+  }
+
+  getReviews(placeId : string){
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const options = new RequestOptions({headers: headers});
+    console.log("get Reviews")
+    return this.http.get(baseUrl + 'review/byPlace?placeID=' + placeId,
+    {headers: {'Content-Type': 'application/json','Access-Control-Allow-Origin':'*', 'responseType': 'application/json'}}
     );
   }
 

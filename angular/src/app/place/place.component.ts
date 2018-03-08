@@ -19,7 +19,6 @@ export class PlaceComponent implements OnInit {
     this.place = this.populateService.populatePlace();
     this.httpService.searchPlace(this.placeID).subscribe(data =>
     {
-      console.log("HERERERERERER");
       console.log(data);
       // this.place.id = data[]
       this.place.id = this.placeID;
@@ -56,10 +55,12 @@ export class PlaceComponent implements OnInit {
     console.log("getting id");
     console.log(this.router.url.split('=')[1]);
     this.placeID = this.router.url.split('=')[1];
-
+    this.httpService.getReviews(this.placeID).subscribe(data=>{
+      //TODO::Get response json, add review cards to list
+    });
   }
 
-  placeID : string = "ii";
+  placeID : string = "";
   listReviews : Review [] = [];
   place : Place;
   ratingString : string = 'Rating ';
@@ -69,7 +70,9 @@ export class PlaceComponent implements OnInit {
   reviewRatingString : string = 'Rating: &#x272F; &#x272F; &#x272F;';
 
   submitReview(){
-    this.httpService.submitReview(this.rating, this.review, this.place.id);
+    this.httpService.submitReview(this.rating, this.review, this.place.id).subscribe( data => {
+      console.log("Hi");
+    });
   }
 
   changeRatingString() : void {
