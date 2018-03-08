@@ -48,8 +48,8 @@
             <br />
             <div class="mat-button-toggle-group" role="group" (click)="setSearchCategory()" aria-label="Basic example" >
               <button type="button" class="btn btn-secondary" value="Hotel" [(ngModel)]="searchCategory">Hotel</button>
-              <button type="button" class="btn btn-secondary">Food</button>
-              <button type="button" class="btn btn-secondary">Bars</button>
+              <button type="button" class="btn btn-secondary" (click)="onclickFood()">Food</button>
+              <button type="button" class="btn btn-secondary" (click)="onclickFood()">Bars</button>
               <button type="button" class="btn btn-secondary">Night Club</button>
               <button type="button" class="btn btn-secondary">Shopping</button>
               <button type="button" class="btn btn-secondary">Museum</button>

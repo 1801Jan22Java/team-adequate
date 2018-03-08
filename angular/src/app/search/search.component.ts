@@ -20,10 +20,10 @@ export class SearchComponent implements OnInit {
   populateAutocompleteHelper(data : Object) : void {
     for(let entry in data) {
       console.log(data[entry]['description']);
-      console.log(data[entry]['place_id']);
+      console.log(data[entry]['rating']);
       var place : Place = {
         id : data[entry]['place_id'],
-        rating : data[entry]['rating'],
+        rating : parseInt(data[entry]['rating']),
         description : data[entry]['description'],
         placeTypes : [],
         placePictures : []
