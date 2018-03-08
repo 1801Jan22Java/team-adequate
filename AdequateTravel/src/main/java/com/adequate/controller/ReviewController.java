@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adequate.beans.Location;
+import com.adequate.beans.Person;
 import com.adequate.beans.Review;
 import com.adequate.service.LocationService;
 import com.adequate.service.PersonService;
@@ -73,16 +74,19 @@ public class ReviewController {
 		if (CurrentUser.getValidSession()) {
 			
 			Location l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
+			Person p = realPersonService.getPersonById(CurrentUser.getUserID());
 			// if location doesn't yet exist in database, create new 
 			if(realLocationService.getLocationByPlaceId(mockReview.getPlaceID()) == null) {
 				realLocationService.addLocation(new Location(mockReview.getPlaceID()));
 				l = realLocationService.getLocationByPlaceId(mockReview.getPlaceID());
-				Review review = new Review(l.getLocationId(), CurrentUser.getUserID(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
-				review.setLocationList(l);
+				Review review = new Review(l.getLocationId(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
+				review.setLocation(l);
+				review.setPerson(p);
 				realReviewService.addReview(review);
 			} else { // use existing location 
-				Review review = new Review(l.getLocationId(), CurrentUser.getUserID(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
-				review.setLocationList(l);
+				Review review = new Review(l.getLocationId(), mockReview.getReview(), Date.valueOf(LocalDate.now()), mockReview.getRating());
+				review.setLocation(l);
+				review.setPerson(p);
 				realReviewService.addReview(review);
 			}
 			
