@@ -54,7 +54,7 @@ export class AccountPageComponent implements OnInit {
   updateInfo(){
     console.log( this.user.firstname);
     //var reader = new FileReader();
-
+    
     let file : File = document.getElementById("changeProfilePicture")['files'][0];
 
     //Slice converts file to a blob; only do this if file has been chosen
