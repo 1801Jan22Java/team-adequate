@@ -13,16 +13,19 @@
     <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <!-- TODO: Change images -->
+        <!-- <div  *ngFor="let photo of place.placePictures" class="item active">
+          <img class="imgItem" src={{photo}}>
+        </div> -->
           <div class="item active">
-            <img class="imgItem" src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Los Angeles">
+            <img class="imgItem" src={{place.placePictures[0]}} alt="Los Angeles">
           </div>
 
           <div class="item">
-            <img class="imgItem" src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Chicago">
+            <img class="imgItem" src={{place.placePictures[1]}} alt="Chicago">
           </div>
 
           <div class="item">
-            <img class="imgItem" src="https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?h=350&auto=compress&cs=tinysrgb"  alt="New York">
+            <img class="imgItem" src={{place.placePictures[2]}}  alt="New York">
           </div>
         </div>
 

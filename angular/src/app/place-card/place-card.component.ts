@@ -16,7 +16,6 @@ export class PlaceCardComponent implements OnInit {
   ngOnInit() {
     this.createRatingString();
     console.log(this.place.placePictures[0]);
-    this.place.placePictures[0] = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=250&maxheight=250&photoreference=' + this.place.placePictures[0]['photo_reference'] + '&key=AIzaSyAvaHh8JH7aOABXm2NQzO9OveT5VLNDQXU';
   }
 
   createRatingString() {
